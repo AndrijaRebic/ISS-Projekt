@@ -527,6 +527,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6954883412887146921, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1138154658}
+    - targetCorrespondingSourceObject: {fileID: 6954883412887146921, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1138154659}
   m_SourcePrefab: {fileID: 100100000, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
 --- !u!1 &1014191762
 GameObject:
@@ -827,8 +830,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1867bbff4f5a172458516d3bce359581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankController
-  moveSpeed: 10
-  turnSpeed: 150
+  moveSpeed: 20
+  turnSpeed: 100
 --- !u!54 &1138154658
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -837,7 +840,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138154655}
   serializedVersion: 5
-  m_Mass: 50
+  m_Mass: 1
   m_LinearDamping: 1
   m_AngularDamping: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -853,9 +856,30 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!65 &1138154659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138154655}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 2, z: 8}
+  m_Center: {x: 0, y: 1.01, z: -1}
 --- !u!1 &1203797966
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +945,7 @@ TerrainCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
   m_TerrainData: {fileID: 15600000, guid: 8f6858f6ed931ef4ba78888a5a771da8, type: 2}
