@@ -21,8 +21,15 @@ public class TankController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput = Input.GetAxis("Vertical");
-        turnInput = Input.GetAxis("Horizontal");
+        moveInput = 0f;
+        turnInput = 0f;
+
+        if (Input.GetKey(KeyCode.W)) moveInput = 1f;
+        if (Input.GetKey(KeyCode.S)) moveInput = -1f;
+
+        if (Input.GetKey(KeyCode.A)) turnInput = -1f;
+        if (Input.GetKey(KeyCode.D)) turnInput = 1f;
+
     }
 
     private void FixedUpdate()

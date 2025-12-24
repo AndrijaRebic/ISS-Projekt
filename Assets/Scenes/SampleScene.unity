@@ -194,6 +194,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183588336}
   m_CullTransparentMesh: 1
+--- !u!1 &217865327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4471629934674839183, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
+  m_PrefabInstance: {fileID: 1012031852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &217865331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217865327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a6f3533dc9fca43866927ae9e1ff38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TurretController
+  rotationSpeed: 60
+  cannon: {fileID: 573103102}
+  cannonSpeed: 30
+  minPitch: -10
+  maxPitch: 20
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +588,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470622409}
   m_CullTransparentMesh: 1
+--- !u!4 &573103102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8273797401602894070, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
+  m_PrefabInstance: {fileID: 1012031852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &687012747 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4241866643358410172, guid: f5b1fa574cb5deb49a65ee34e7ffef4c, type: 3}
@@ -1073,6 +1100,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6954883412887146921, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1138154660}
+    - targetCorrespondingSourceObject: {fileID: 4471629934674839183, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 217865331}
   m_SourcePrefab: {fileID: 100100000, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
 --- !u!1 &1014191762
 GameObject:
