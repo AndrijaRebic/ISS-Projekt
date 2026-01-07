@@ -7,6 +7,7 @@ public class FuelSystem : MonoBehaviour
     public float fuelDrainRate = 5f;
 
     public FuelGauge fuelGauge;
+    public TankController tank;
 
     void Start()
     {
@@ -15,13 +16,15 @@ public class FuelSystem : MonoBehaviour
 
     void Update()
     {
-        if (IsMoving())
+
+        if (tank.isEngineOn && IsMoving())
         {
             currentFuel -= Time.deltaTime * fuelDrainRate;
-            currentFuel = Mathf.Clamp(currentFuel, 10f, maxFuel);
+            currentFuel = Mathf.Clamp(currentFuel, 10f, maxFuel); 
 
             fuelGauge.UpdateNeedle(currentFuel);
         }
+
     }
 
     bool IsMoving()

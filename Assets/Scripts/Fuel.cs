@@ -11,6 +11,8 @@ public class FuelGauge : MonoBehaviour
     public float minAngle = -90f;
     public float maxAngle = 90f;
 
+    
+
     public void UpdateNeedle(float currentFuel)
     {
         float t = Mathf.Clamp01(currentFuel / maxFuel);

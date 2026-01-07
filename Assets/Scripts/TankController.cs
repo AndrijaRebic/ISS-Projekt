@@ -13,6 +13,10 @@ public class TankController : MonoBehaviour
 
     Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    [HideInInspector]
+    public bool isEngineOn = false;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -21,6 +25,15 @@ public class TankController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!isEngineOn)
+        {
+            moveInput = 0f;
+            turnInput = 0f;
+            return;
+        }
+
+
         moveInput = 0f;
         turnInput = 0f;
 
@@ -34,6 +47,7 @@ public class TankController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!isEngineOn) return;
         rb.AddForce(transform.forward * moveInput * moveSpeed, ForceMode.Force);
         rb.AddTorque(Vector3.up * turnInput * turnSpeed, ForceMode.Force);
     }
