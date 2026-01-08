@@ -3,11 +3,14 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MissileManualControl : MonoBehaviour
 {
-    public float speed = 120f;          // stalna brzina naprijed
-    public float turnRate = 90f;        // stupnjevi u sekundi (koliko brzo skreće)
-    public bool useMouse = false;       // opcionalno: miš umjesto tipki
+    public float speed = 120f;          // stalna brzina
+    public float turnRate = 90f;
+    public bool useMouse = false;
 
     Rigidbody rb;
+
+    // smjer leta (world space), jednom zadamo pri launchu
+    private Vector3 flyDir = Vector3.up;
 
     void Awake()
     {
@@ -15,26 +18,42 @@ public class MissileManualControl : MonoBehaviour
         rb.useGravity = false;
     }
 
+    // Pozovi ovo odmah nakon Instantiate
+    public void Launch(Vector3 direction, float launchSpeed)
+    {
+        flyDir = direction.normalized;
+        speed = launchSpeed;
+
+        // uskladi vizual da "gleda" u smjer leta
+        transform.rotation = Quaternion.LookRotation(flyDir, Vector3.up);
+
+        rb.linearVelocity = flyDir * speed;
+    }
+
     void FixedUpdate()
     {
-        // Input: strelice ili WASD
-        float yaw = Input.GetAxis("Horizontal");   // A/D ili Left/Right
-        float pitch = -Input.GetAxis("Vertical");  // W/S ili Up/Down (minus da je prirodnije)
+        float yaw = Input.GetAxis("Horizontal");
+        float pitch = -Input.GetAxis("Vertical");
 
-        // Opcija: miš
         if (useMouse)
         {
             yaw = Input.GetAxis("Mouse X");
             pitch = -Input.GetAxis("Mouse Y");
         }
 
-        // Rotacija rakete
-        transform.Rotate(pitch * turnRate * Time.fixedDeltaTime,
-                         yaw   * turnRate * Time.fixedDeltaTime,
-                         0f,
-                         Space.Self);
+        // rotiraj smjer leta (a ne nužno transform.forward)
+        Quaternion delta = Quaternion.Euler(
+            pitch * turnRate * Time.fixedDeltaTime,
+            yaw   * turnRate * Time.fixedDeltaTime,
+            0f
+        );
 
-        // Kretanje naprijed
-        rb.linearVelocity = transform.forward * speed;
+        flyDir = (delta * flyDir).normalized;
+
+        // drži brzinu u tom smjeru
+        rb.linearVelocity = flyDir * speed;
+
+        // i okreni model da prati smjer
+        transform.rotation = Quaternion.LookRotation(flyDir, Vector3.up);
     }
 }

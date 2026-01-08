@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cebff7301a290b140828b329e08eaf6e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316606
+  packageName: 'Modern Warfare: Missile system'
+  packageVersion: 1.0.1
+  assetPath: Assets/MODERN WARFARE/Resources/Prop Materials/muzzle flash/BULLET.mat
+  uploadId: 797794

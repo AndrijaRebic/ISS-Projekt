@@ -1,25 +1,28 @@
+// LauncherFire.cs
 using UnityEngine;
+using System.Collections;
 
 public class LauncherFire : MonoBehaviour
 {
-    public Transform firePoint;        // Firepoint (child od Launchera)
-    public GameObject missilePrefab;   // Missile.prefab
-    public float missileSpeed = 10f;  // demo brzina
+    public Transform firePoint;
+    public GameObject missilePrefab;
+
+    public float missileSpeed = 10f;
+
+    // skala klona (kao tvoj launcher 0.15)
+    public float cloneScale = 0.10f;
+
+    // pomak da ne zapne u launcheru
+    public float spawnForwardOffset = 0.0f;
+    public float spawnUpOffset = 0.05f;
+
     public KeyCode fireKey = KeyCode.Space;
-
-    public Camera missileCam;
-
-
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("SPACE pressed -> firing");
+        if (Input.GetKeyDown(fireKey))
             Fire();
-        }
     }
-
 
     void Fire()
     {
@@ -29,13 +32,40 @@ public class LauncherFire : MonoBehaviour
             return;
         }
 
-        if (missileCam != null) missileCam.enabled = true;
+        // Spawn pozicija: točno iz firePointa + mali offset da ne kolidira odmah
+        Vector3 spawnPos = firePoint.position
+                         + firePoint.forward * spawnForwardOffset
+                         + Vector3.up * spawnUpOffset;
 
+        // Rotacija: da raketa gleda gore
+        Quaternion spawnRot = Quaternion.LookRotation(Vector3.up, Vector3.up);
 
-        GameObject missile = Instantiate(missilePrefab, firePoint.position, firePoint.rotation);
+        // Ako želiš da gleda smjer cijevi umjesto gore, koristi ovo:
+        // Quaternion spawnRot = firePoint.rotation;
 
-        Debug.Log("Fired missile, trying to set camera target...");
-        
+        GameObject missile = Instantiate(missilePrefab, spawnPos, spawnRot);
+
+        // Odvoji od parenta
+        missile.transform.SetParent(null, true);
+
+        // Scale odmah + opet idući frame (da prepiše druge skripte ako resetiraju)
+        ForceScale(missile.transform);
+        StartCoroutine(ForceScaleNextFrame(missile.transform));
+
+        // Smjer leta:
+        Vector3 dir = Vector3.up;               // uvijek gore ✅
+        // Ako želiš smjer cijevi, prebaci na:
+        // Vector3 dir = firePoint.forward;
+
+        // Ako ima manual control, njemu predaj launch parametre
+        var manual = missile.GetComponent<MissileManualControl>();
+        if (manual != null)
+        {
+            manual.Launch(dir, missileSpeed);
+            return;
+        }
+
+        // Fallback ako nema manual skriptu
         Rigidbody rb = missile.GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -43,10 +73,18 @@ public class LauncherFire : MonoBehaviour
             return;
         }
 
-        rb.linearVelocity = firePoint.forward * missileSpeed;
+        rb.useGravity = false;
+        rb.linearVelocity = dir.normalized * missileSpeed;
+    }
 
-        var camFollow = FindFirstObjectByType<CameraFollow>();
-        if (camFollow != null)
-            camFollow.target = missile.transform;
+    void ForceScale(Transform t)
+    {
+        t.localScale = Vector3.one * cloneScale;
+    }
+
+    IEnumerator ForceScaleNextFrame(Transform t)
+    {
+        yield return null;
+        if (t != null) ForceScale(t);
     }
 }

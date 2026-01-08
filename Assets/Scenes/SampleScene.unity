@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 7bd84746e3c032c4790739ece96e7e14, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -540,6 +540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1014191763}
+  - component: {fileID: 1014191764}
   m_Layer: 0
   m_Name: Team 12.2 (Rocket System)
   m_TagString: Untagged
@@ -556,12 +557,30 @@ Transform:
   m_GameObject: {fileID: 1014191762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.19516, y: -0, z: 2.41276}
+  m_LocalPosition: {x: 3.19516, y: 3.03, z: 2.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1092311080}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1014191764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014191762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e94fd7533a71d46b27926b6065306a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LauncherFire
+  firePoint: {fileID: 1092311080}
+  missilePrefab: {fileID: 0}
+  missileSpeed: 10
+  fireKey: 32
+  missileCam: {fileID: 0}
 --- !u!1 &1019729826
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +827,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1092311079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1092311080}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1092311080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092311079}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.33, y: 0.33, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1014191763}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1138154655 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6954883412887146921, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
@@ -832,6 +882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankController
   moveSpeed: 20
   turnSpeed: 100
+  controlsEnabled: 1
 --- !u!54 &1138154658
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -912,6 +963,63 @@ Transform:
   - {fileID: 1138154656}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1844392287
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2718334169608132663, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
+      propertyPath: m_Name
+      value: Missile battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382948973638369933, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382948973638369933, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382948973638369933, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.136717
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382948973638369933, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382948973638369933, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382948973638369933, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382948973638369933, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382948973638369933, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382948973638369933, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382948973638369933, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a274339950da7d346a6f5b5fb2aab086, type: 3}
 --- !u!1 &1915171304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,3 +1124,4 @@ SceneRoots:
   - {fileID: 1203797967}
   - {fileID: 1014191763}
   - {fileID: 1019729832}
+  - {fileID: 1844392287}
