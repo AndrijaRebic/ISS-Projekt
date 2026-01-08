@@ -13,8 +13,13 @@ public class TurretController : MonoBehaviour
 
     private float currentPitch = 0f;
 
+    [Header("Engine State")]
+    public TankController tank; 
+
     void Update()
     {
+        if (tank != null && !tank.isEngineOn) return;
+
         RotateTurret();
         RotateCannon();
     }

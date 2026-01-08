@@ -216,7 +216,6 @@ MonoBehaviour:
   cannonSpeed: 30
   minPitch: -10
   maxPitch: 20
-  tank: {fileID: 1138154657}
 --- !u!1 &255768715
 GameObject:
   m_ObjectHideFlags: 0
