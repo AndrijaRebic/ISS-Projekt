@@ -16,7 +16,7 @@ namespace MirzaBeig.CinematicExplosionsFree
             Day,
             Night,
         }
-        Camera camera;
+        Camera glavnaCamera;
 
         List<ParticleSystem> particleSystems;
         public Transform particleSystemsContainer;
@@ -44,7 +44,7 @@ namespace MirzaBeig.CinematicExplosionsFree
         {
             // Set scene.
 
-            camera = Camera.main;
+            glavnaCamera = Camera.main;
             Application.targetFrameRate = targetFrameRate;
 
             // Find all reflection probes.
@@ -123,7 +123,7 @@ namespace MirzaBeig.CinematicExplosionsFree
         {
             currentScene = Scene.Night;
 
-            camera.clearFlags = CameraClearFlags.SolidColor;
+            glavnaCamera.clearFlags = CameraClearFlags.SolidColor;
 
             RenderSettings.ambientIntensity = 0.8f;
             RenderSettings.reflectionIntensity = 0.5f;
@@ -138,7 +138,7 @@ namespace MirzaBeig.CinematicExplosionsFree
         {
             currentScene = Scene.Day;
 
-            camera.clearFlags = CameraClearFlags.Skybox;
+            glavnaCamera.clearFlags = CameraClearFlags.Skybox;
 
             RenderSettings.ambientIntensity = 1.0f;
             RenderSettings.reflectionIntensity = 1.0f;
