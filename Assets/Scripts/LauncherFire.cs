@@ -7,6 +7,12 @@ public class LauncherFire : MonoBehaviour
     public Transform firePoint;
     public GameObject missilePrefab;
 
+    //NOVO
+    public Camera missileCamera;
+    public Transform missileCarrier; // launcher / nosač
+    private GameObject activeMissile;
+
+
     public float missileSpeed = 10f;
 
     // skala klona (kao tvoj launcher 0.15)
@@ -20,9 +26,12 @@ public class LauncherFire : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(fireKey))
+        if (Input.GetKeyDown(fireKey) && activeMissile == null)
+        {
             Fire();
+        }
     }
+
 
     void Fire()
     {
@@ -45,6 +54,22 @@ public class LauncherFire : MonoBehaviour
 
         GameObject missile = Instantiate(missilePrefab, spawnPos, spawnRot);
 
+        //NOVO
+        var manual = missile.GetComponent<MissileManualControl>();
+        if (manual != null)
+        {
+            manual.launcher = this;
+        }
+
+        activeMissile = missile;
+
+        var camFollow = missileCamera.GetComponent<MissileCameraFollow>();
+        if (camFollow != null)
+        {
+            camFollow.target = missile.transform;
+        }
+
+
         // Odvoji od parenta
         missile.transform.SetParent(null, true);
 
@@ -58,7 +83,7 @@ public class LauncherFire : MonoBehaviour
         // Vector3 dir = firePoint.forward;
 
         // Ako ima manual control, njemu predaj launch parametre
-        var manual = missile.GetComponent<MissileManualControl>();
+        //var manual = missile.GetComponent<MissileManualControl>();
         if (manual != null)
         {
             manual.Launch(dir, missileSpeed);
@@ -76,6 +101,19 @@ public class LauncherFire : MonoBehaviour
         rb.useGravity = false;
         rb.linearVelocity = dir.normalized * missileSpeed;
     }
+
+    //NOVO
+    public void OnMissileDestroyed()
+    {
+        activeMissile = null;
+
+        var camFollow = missileCamera.GetComponent<MissileCameraFollow>();
+        if (camFollow != null)
+        {
+            camFollow.target = missileCarrier;
+        }
+    }
+
 
     void ForceScale(Transform t)
     {

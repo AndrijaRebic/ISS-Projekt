@@ -6,6 +6,7 @@ public class MissileManualControl : MonoBehaviour
     public float speed = 120f;          // stalna brzina
     public float turnRate = 90f;
     public bool useMouse = false;
+    public LauncherFire launcher;
 
     Rigidbody rb;
 
@@ -56,4 +57,26 @@ public class MissileManualControl : MonoBehaviour
         // i okreni model da prati smjer
         transform.rotation = Quaternion.LookRotation(flyDir, Vector3.up);
     }
+
+    void OnDestroy()
+    {
+        if (launcher != null)
+            launcher.OnMissileDestroyed();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Missile hit: " + collision.gameObject.name);
+
+        Explode();
+    }
+    void Explode()
+    {
+        // Ovdje kasnije možeš spawnati explosion prefab
+        Destroy(gameObject);
+    }
+
+
+
+
 }
