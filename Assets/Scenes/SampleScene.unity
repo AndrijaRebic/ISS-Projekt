@@ -215,7 +215,7 @@ MonoBehaviour:
   cannon: {fileID: 573103102}
   cannonSpeed: 30
   minPitch: -10
-  maxPitch: 20
+  maxPitch: 10
   tank: {fileID: 1138154657}
 --- !u!4 &217865332 stripped
 Transform:
@@ -2356,10 +2356,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankShooting
   cannonMuzzle: {fileID: 1091147801}
   cannonShellPrefab: {fileID: 8585542772986347399, guid: f1c24dc36b65de24ab16093f518a7397, type: 3}
+  cannonMuzzleFlashPrefab: {fileID: 100006, guid: 4575df893a6e3f64a8283dee38413a34, type: 3}
   cannonForce: 3000
   cannonCooldown: 1.5
   machineGunMuzzle: {fileID: 1161032683}
   machineGunBulletPrefab: {fileID: 2989000923634411228, guid: 44cdcd55c8562cc46b31e272eb09fc5b, type: 3}
+  lmgMuzzleFlashPrefab: {fileID: 100006, guid: c888f0c922d622147bbdbe2ca794142b, type: 3}
   machineGunForce: 800
   machineGunFireRate: 0.1
 --- !u!1 &1161032682
@@ -2387,7 +2389,7 @@ Transform:
   m_GameObject: {fileID: 1161032682}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89, y: -0.039984398, z: 1.18}
+  m_LocalPosition: {x: -0.866, y: -0.039984398, z: 1.734}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
