@@ -72,15 +72,17 @@ public class TankShooting : MonoBehaviour
             rb.AddForce(machineGunMuzzle.forward * machineGunForce);
 
             // Muzzle flash
-            Quaternion flashRotation = machineGunMuzzle.rotation * Quaternion.Euler(180f, 0f, 0f);
+            Quaternion flashRotation = machineGunMuzzle.rotation * Quaternion.Euler(180f, -90f, 0f);
 
             if (lmgMuzzleFlashPrefab != null)
             {
-                Instantiate(
+                GameObject flash = Instantiate(
                     lmgMuzzleFlashPrefab,
                     machineGunMuzzle.position,
                     flashRotation
                 );
+
+                Destroy(flash, 0.1f);
             }
         }
     }
