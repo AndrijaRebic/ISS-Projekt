@@ -2320,7 +2320,6 @@ MonoBehaviour:
   maxHealth: 100
   explosionPrefab: {fileID: 1998830269065593993, guid: b70fbea4bc8994749ba52e4f560f9f28, type: 3}
   smokePrefab: {fileID: 7187393024123294025, guid: 5f2bc166e68df974bb952c4ec5c43454, type: 3}
-  lightPrefab: {fileID: 9004753270806114786, guid: 23bd0446f3d037d48a1bf0e344b8fe07, type: 3}
   deathDelay: 0.2
   tankUI: {fileID: 1050253928}
 --- !u!1 &1203797966
