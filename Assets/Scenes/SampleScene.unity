@@ -258,7 +258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 10, y: 90, z: 150}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 800.00073, y: 320}
+  m_AnchoredPosition: {x: 800, y: 320}
   m_SizeDelta: {x: 100, y: 250}
   m_Pivot: {x: 0, y: 0}
 --- !u!65 &255768717
@@ -842,7 +842,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 700, y: 540}
+  m_AnchoredPosition: {x: 900, y: 540}
   m_SizeDelta: {x: 2560, y: 1440}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &513300338
@@ -1336,6 +1336,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642493197}
   m_CullTransparentMesh: 1
+--- !u!1 &657695073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 657695074}
+  - component: {fileID: 657695075}
+  m_Layer: 0
+  m_Name: TankAudioController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &657695074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657695073}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1203797967}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &657695075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657695073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e89cc24c3a37fa4097a2b95366c25e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankAudioController
+  AllSounds:
+  - Type: 1
+    Clip: {fileID: 8300000, guid: 73f82ffe36f28c842b790e77bf458a72, type: 3}
+    Volume: 1
+    Source: {fileID: 0}
+  - Type: 2
+    Clip: {fileID: 8300000, guid: 3c82c9db23c204746b736243f62770ca, type: 3}
+    Volume: 0.5
+    Source: {fileID: 0}
+  - Type: 0
+    Clip: {fileID: 8300000, guid: fcae93408ee21f5429f9ef667c41b58f, type: 3}
+    Volume: 1
+    Source: {fileID: 0}
+  - Type: 3
+    Clip: {fileID: 8300000, guid: 0a78e6300d1139e40ad81eb14082739e, type: 3}
+    Volume: 0.8
+    Source: {fileID: 0}
+  SelectedSound: 2
 --- !u!114 &687012747 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4241866643358410172, guid: f5b1fa574cb5deb49a65ee34e7ffef4c, type: 3}
@@ -2362,6 +2424,8 @@ MonoBehaviour:
   smokePrefab: {fileID: 7187393024123294025, guid: 5f2bc166e68df974bb952c4ec5c43454, type: 3}
   deathDelay: 0.2
   tankUI: {fileID: 1050253928}
+  explodeSound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &1138154662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2446,6 +2510,7 @@ Transform:
   m_Children:
   - {fileID: 1138154656}
   - {fileID: 1050253929}
+  - {fileID: 657695074}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1332931222

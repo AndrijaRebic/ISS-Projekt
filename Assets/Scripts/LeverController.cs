@@ -45,5 +45,18 @@ public class SimpleLever : MonoBehaviour
         {
             tank.isEngineOn = isDown;
         }
+
+         //zvuk
+         if (TankAudioController.Instance != null)
+        {
+            if (isDown)
+            {
+                TankAudioController.Instance.StartMotor();
+            }
+            else
+            {
+                TankAudioController.Instance.StopMotor();
+            }
+        }
     }
 }

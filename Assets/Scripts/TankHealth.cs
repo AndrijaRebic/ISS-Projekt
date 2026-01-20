@@ -17,12 +17,20 @@ public class TankHealth : MonoBehaviour
     [Header("UI")]
     public GameObject tankUI;
 
+    [Header("Audio")]
+    public AudioClip explodeSound;
+    public AudioSource audioSource;
+
     private bool isDead = false;
     public bool IsDead => isDead;
 
     void Start()
     {
         currentHealth = maxHealth;
+
+        if (audioSource == null )
+            audioSource = gameObject.AddComponent<AudioSource>();
+
     }
 
     //samo za testiranje
@@ -43,6 +51,9 @@ public class TankHealth : MonoBehaviour
 
         Debug.Log("Tank hit! Health: " + currentHealth);
 
+        if (TankAudioController.Instance != null)
+            TankAudioController.Instance.Play(TankAudioController.SoundType.Hit);
+
         if (currentHealth <= 0f)
         {
             Die();
@@ -61,6 +72,9 @@ public class TankHealth : MonoBehaviour
 
         if (smokePrefab != null)
             Instantiate(smokePrefab, spawnPos, Quaternion.identity);
+
+        if (TankAudioController.Instance != null)
+            TankAudioController.Instance.Play(TankAudioController.SoundType.Explode);
 
         if (tankUI != null)
             Destroy(tankUI);
