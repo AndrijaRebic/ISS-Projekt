@@ -2422,7 +2422,7 @@ MonoBehaviour:
   maxHealth: 100
   explosionPrefab: {fileID: 1998830269065593993, guid: b70fbea4bc8994749ba52e4f560f9f28, type: 3}
   smokePrefab: {fileID: 7187393024123294025, guid: 5f2bc166e68df974bb952c4ec5c43454, type: 3}
-  deathDelay: 0.2
+  deathDelay: 0.1
   tankUI: {fileID: 1050253928}
   explodeSound: {fileID: 0}
   audioSource: {fileID: 0}
@@ -2438,6 +2438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db97432c1f30e924b8ad84b62d69d824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankShooting
+  tank: {fileID: 1138154657}
   cannonMuzzle: {fileID: 1091147801}
   cannonShellPrefab: {fileID: 8585542772986347399, guid: f1c24dc36b65de24ab16093f518a7397, type: 3}
   cannonMuzzleFlashPrefab: {fileID: 100006, guid: 4575df893a6e3f64a8283dee38413a34, type: 3}

@@ -104,7 +104,7 @@ public class TankAudioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.M))  //provjerava je li space tipka puštena
+        if (Input.GetKeyUp(KeyCode.E))  //provjerava je li space tipka puštena
         {
             engineOn = !engineOn;
 
@@ -114,7 +114,7 @@ public class TankAudioController : MonoBehaviour
                 StopMotor();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && engineOn)
         {
             Play(SoundType.Shoot);
         }

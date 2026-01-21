@@ -65,6 +65,10 @@ public class TankHealth : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
+        if (TankAudioController.Instance != null)
+            TankAudioController.Instance.StopMotor();
+
+
         Vector3 spawnPos = transform.position + Vector3.up * 1.2f;
 
         if (explosionPrefab != null)
@@ -72,6 +76,13 @@ public class TankHealth : MonoBehaviour
 
         if (smokePrefab != null)
             Instantiate(smokePrefab, spawnPos, Quaternion.identity);
+
+        Camera playerCam = Camera.main; 
+        if (playerCam != null && explosionPrefab != null)
+        {
+            Vector3 playerViewPos = playerCam.transform.position + playerCam.transform.forward * 3f;
+            Instantiate(explosionPrefab, playerViewPos, Quaternion.identity);
+        }
 
         if (TankAudioController.Instance != null)
             TankAudioController.Instance.Play(TankAudioController.SoundType.Explode);

@@ -2,7 +2,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TankShooting : MonoBehaviour
-{
+{   
+    [Header("Engine State")]
+    public TankController tank;
+
     [Header("Cannon")]
     public Transform cannonMuzzle;
     public GameObject cannonShellPrefab;
@@ -21,7 +24,10 @@ public class TankShooting : MonoBehaviour
     float machineGunTimer;
 
     void Update()
-    {
+    {   
+        if (tank != null && !tank.isEngineOn)
+            return;
+
         cannonTimer += Time.deltaTime;
         machineGunTimer += Time.deltaTime;
 
