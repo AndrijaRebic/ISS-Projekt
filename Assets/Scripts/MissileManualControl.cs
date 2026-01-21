@@ -1,40 +1,72 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class MissileManualControl : MonoBehaviour
 {
-    public float speed = 120f;          // stalna brzina
-    public float turnRate = 90f;
+    [Header("Movement")]
+    public float speed = 40f;          // fallback, launcher ga pregazi
+    public float turnRate = 120f;
     public bool useMouse = false;
+    public float lifeTime = 15f;
+
+    [Header("FX")]
+    public GameObject hitEffectPrefab;
+
+    [Header("Safety")]
+    public float armDelay = 0.05f;
+
+    [Header("Callbacks")]
     public LauncherFire launcher;
 
-    Rigidbody rb;
-
-    // smjer leta (world space), jednom zadamo pri launchu
-    private Vector3 flyDir = Vector3.up;
+    private Rigidbody rb;
+    private Vector3 flyDir;
+    private bool armed = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
         rb.useGravity = false;
+        rb.isKinematic = false;
+
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+
+        rb.linearDamping = 0f;
+        rb.angularDamping = 10f;
+
+        Destroy(gameObject, lifeTime);
+
+        flyDir = transform.forward;
     }
 
-    // Pozovi ovo odmah nakon Instantiate
-    public void Launch(Vector3 direction, float launchSpeed)
+    public void Launch(Vector3 direction, float launchSpeed, Collider ownerCollider = null)
     {
         flyDir = direction.normalized;
         speed = launchSpeed;
 
-        // uskladi vizual da "gleda" u smjer leta
-        transform.rotation = Quaternion.LookRotation(flyDir, Vector3.up);
+        rb.rotation = Quaternion.LookRotation(flyDir);
 
+        if (ownerCollider != null)
+        {
+            var myCol = GetComponent<Collider>();
+            var cols = ownerCollider.GetComponentsInParent<Collider>();
+            foreach (var c in cols)
+                Physics.IgnoreCollision(myCol, c, true);
+        }
+
+        // ✅ UNITY 6
         rb.linearVelocity = flyDir * speed;
+
+        Invoke(nameof(Arm), armDelay);
     }
+
+    void Arm() => armed = true;
 
     void FixedUpdate()
     {
         float yaw = Input.GetAxis("Horizontal");
-        float pitch = -Input.GetAxis("Vertical");
+        float pitch = Input.GetAxis("Vertical");
 
         if (useMouse)
         {
@@ -42,20 +74,26 @@ public class MissileManualControl : MonoBehaviour
             pitch = -Input.GetAxis("Mouse Y");
         }
 
-        // rotiraj smjer leta (a ne nužno transform.forward)
         Quaternion delta = Quaternion.Euler(
             pitch * turnRate * Time.fixedDeltaTime,
-            yaw   * turnRate * Time.fixedDeltaTime,
+            yaw * turnRate * Time.fixedDeltaTime,
             0f
         );
 
         flyDir = (delta * flyDir).normalized;
 
-        // drži brzinu u tom smjeru
+        // ✅ UNITY 6
         rb.linearVelocity = flyDir * speed;
+        rb.MoveRotation(Quaternion.LookRotation(flyDir));
+    }
 
-        // i okreni model da prati smjer
-        transform.rotation = Quaternion.LookRotation(flyDir, Vector3.up);
+    void OnCollisionEnter(Collision collision)
+    {
+        if (!armed) return;
+
+        Debug.Log($"MISSILE HIT: {collision.gameObject.name}");
+
+        Destroy(gameObject);
     }
 
     void OnDestroy()
@@ -63,20 +101,4 @@ public class MissileManualControl : MonoBehaviour
         if (launcher != null)
             launcher.OnMissileDestroyed();
     }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Missile hit: " + collision.gameObject.name);
-
-        Explode();
-    }
-    void Explode()
-    {
-        // Ovdje kasnije možeš spawnati explosion prefab
-        Destroy(gameObject);
-    }
-
-
-
-
 }

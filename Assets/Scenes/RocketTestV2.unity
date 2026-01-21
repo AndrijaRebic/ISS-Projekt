@@ -119,42 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &88559504 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-  m_PrefabInstance: {fileID: 1156462624}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &144775426 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5421877510675682020, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-  m_PrefabInstance: {fileID: 1156462624}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &144775427 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 840184754805082069, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-  m_PrefabInstance: {fileID: 1156462624}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &144775430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144775426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1e94fd7533a71d46b27926b6065306a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LauncherFire
-  firePoint: {fileID: 1769638801}
-  missilePrefab: {fileID: 8371340007317026248, guid: 472fe49dea222c9419c67a05c3c4038a, type: 3}
-  missileCamera: {fileID: 1011695993}
-  missileCarrier: {fileID: 144775427}
-  missileSpeed: 10
-  cloneScale: 0.1
-  spawnForwardOffset: 0
-  spawnUpOffset: 0.05
-  fireKey: 32
 --- !u!1 &183588336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,7 +2074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9d9393fc3f2bd4b96109225b280aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MissileCameraFollow
-  target: {fileID: 144775427}
+  target: {fileID: 840184755800850421}
   offset: {x: 0, y: 2, z: -6}
   followSpeed: 10
 --- !u!1001 &1012031852
@@ -2699,69 +2663,6 @@ MonoBehaviour:
   fuelDrainRate: 0.5
   fuelGauge: {fileID: 780682872}
   tank: {fileID: 1138154657}
---- !u!1001 &1156462624
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2126442154}
-    m_Modifications:
-    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 17.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.73
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7956250362264916921, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      propertyPath: m_Name
-      value: Rocket Launcher
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 840184754805082069, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1769638801}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5421877510675682020, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 144775430}
-  m_SourcePrefab: {fileID: 100100000, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
 --- !u!1 &1203797966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3168,37 +3069,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766002130}
   m_CullTransparentMesh: 1
---- !u!1 &1769638800
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1769638801}
-  m_Layer: 0
-  m_Name: FirePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1769638801
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769638800}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: -0.81, z: 16.598}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 144775427}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915171304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,9 +3303,97 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 88559504}
+  - {fileID: 7287271836637851939}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &472949387912900158
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2126442154}
+    m_Modifications:
+    - target: {fileID: 1515598087979734898, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_Name
+      value: TurretPitchPivot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641026733752845560, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: useMouse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805160874920475229, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: missileCamera
+      value: 
+      objectReference: {fileID: 1011695993}
+    - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.646
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6392974146916648556, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: missileCamera
+      value: 
+      objectReference: {fileID: 1011695993}
+    - target: {fileID: 7353125262737664311, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_Name
+      value: Rocket Launcher Custom
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510449999921799876, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.89
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4805160874920475229, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+--- !u!4 &840184755800850421 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1915890619084219059, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+  m_PrefabInstance: {fileID: 472949387912900158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7287271836637851939 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
+  m_PrefabInstance: {fileID: 472949387912900158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

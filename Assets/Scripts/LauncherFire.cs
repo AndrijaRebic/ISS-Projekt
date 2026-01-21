@@ -7,86 +7,75 @@ public class LauncherFire : MonoBehaviour
     public Transform firePoint;
     public GameObject missilePrefab;
 
-    //NOVO
     public Camera missileCamera;
     public Transform missileCarrier; // launcher / nosač
     private GameObject activeMissile;
 
+    public float missileSpeed = 44f;
 
-    public float missileSpeed = 10f;
-
-    // skala klona (kao tvoj launcher 0.15)
     public float cloneScale = 0.10f;
 
-    // pomak da ne zapne u launcheru
-    public float spawnForwardOffset = 0.0f;
-    public float spawnUpOffset = 0.05f;
+    public float spawnForwardOffset = 0.2f;
+    public float spawnUpOffset = 0.00f;
 
     public KeyCode fireKey = KeyCode.Space;
 
+    public bool HasActiveMissile => activeMissile != null;
+
     void Update()
     {
-        if (Input.GetKeyDown(fireKey) && activeMissile == null)
+        if (Input.GetKeyDown(fireKey))
         {
-            Fire();
+            Debug.Log($"[LauncherFire] Space on GO='{gameObject.name}' instanceID={gameObject.GetInstanceID()} compID={GetInstanceID()} activeMissile={(activeMissile ? activeMissile.name : "null")}", this);
         }
+
+        if (Input.GetKeyDown(fireKey) && activeMissile == null)
+            Fire();
     }
 
 
     void Fire()
     {
+        Debug.Log($"Firing missile! missileSpeed={missileSpeed}");
+
         if (firePoint == null || missilePrefab == null)
         {
             Debug.LogError("Postavi FirePoint i Missile Prefab u Inspectoru!");
             return;
         }
 
-        // Spawn pozicija: točno iz firePointa + mali offset da ne kolidira odmah
         Vector3 spawnPos = firePoint.position
                          + firePoint.forward * spawnForwardOffset
-                         + Vector3.up * spawnUpOffset;
+                         + firePoint.up * spawnUpOffset;
 
-        // Rotacija: da raketa gleda gore
-        Quaternion spawnRot = Quaternion.LookRotation(Vector3.up, Vector3.up);
-
-        // Ako želiš da gleda smjer cijevi umjesto gore, koristi ovo:
-        // Quaternion spawnRot = firePoint.rotation;
+        Quaternion spawnRot = firePoint.rotation;
 
         GameObject missile = Instantiate(missilePrefab, spawnPos, spawnRot);
+        activeMissile = missile;
 
-        //NOVO
+        // Kamera prati raketu
+        var camFollow = missileCamera != null ? missileCamera.GetComponent<MissileCameraFollow>() : null;
+        if (camFollow != null)
+            camFollow.target = missile.transform;
+
+        missile.transform.SetParent(null, true);
+
+        // Scale
+        ForceScale(missile.transform);
+        StartCoroutine(ForceScaleNextFrame(missile.transform));
+
+        // Smjer leta = smjer cijevi
+        Vector3 dir = firePoint.forward;
+
+        // Owner collider (za ignore)
+        Collider ownerCol = GetComponentInParent<Collider>();
+
+        // Manual control
         var manual = missile.GetComponent<MissileManualControl>();
         if (manual != null)
         {
             manual.launcher = this;
-        }
-
-        activeMissile = missile;
-
-        var camFollow = missileCamera.GetComponent<MissileCameraFollow>();
-        if (camFollow != null)
-        {
-            camFollow.target = missile.transform;
-        }
-
-
-        // Odvoji od parenta
-        missile.transform.SetParent(null, true);
-
-        // Scale odmah + opet idući frame (da prepiše druge skripte ako resetiraju)
-        ForceScale(missile.transform);
-        StartCoroutine(ForceScaleNextFrame(missile.transform));
-
-        // Smjer leta:
-        Vector3 dir = Vector3.up;               // uvijek gore ✅
-        // Ako želiš smjer cijevi, prebaci na:
-        // Vector3 dir = firePoint.forward;
-
-        // Ako ima manual control, njemu predaj launch parametre
-        //var manual = missile.GetComponent<MissileManualControl>();
-        if (manual != null)
-        {
-            manual.Launch(dir, missileSpeed);
+            manual.Launch(dir, missileSpeed, ownerCol);
             return;
         }
 
@@ -99,21 +88,19 @@ public class LauncherFire : MonoBehaviour
         }
 
         rb.useGravity = false;
+
+        // ✅ PROMJENA: linearVelocity -> velocity
         rb.linearVelocity = dir.normalized * missileSpeed;
     }
 
-    //NOVO
     public void OnMissileDestroyed()
     {
         activeMissile = null;
 
-        var camFollow = missileCamera.GetComponent<MissileCameraFollow>();
+        var camFollow = missileCamera != null ? missileCamera.GetComponent<MissileCameraFollow>() : null;
         if (camFollow != null)
-        {
             camFollow.target = missileCarrier;
-        }
     }
-
 
     void ForceScale(Transform t)
     {
