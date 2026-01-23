@@ -157,6 +157,6 @@ MonoBehaviour:
   turnRate: 120
   useMouse: 0
   lifeTime: 15
-  hitEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 1620140131458704099, guid: 57e5b83dfee152a47aedf7d83c83e9f5, type: 3}
   armDelay: 0.05
   launcher: {fileID: 0}

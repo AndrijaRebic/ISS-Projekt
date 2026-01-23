@@ -218,7 +218,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 23
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -239,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000014509406, y: -0.000000004590975, z: -6.6612325e-17, w: 1}
-  m_LocalPosition: {x: 210, y: 32.6, z: 210}
+  m_LocalPosition: {x: 460, y: 2.6, z: 440}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 435009646}
   - component: {fileID: 435009648}
   - component: {fileID: 435009647}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,11 +645,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4241866643649457908, guid: f5b1fa574cb5deb49a65ee34e7ffef4c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 4241866643649457908, guid: f5b1fa574cb5deb49a65ee34e7ffef4c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 215
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4241866643649457908, guid: f5b1fa574cb5deb49a65ee34e7ffef4c, type: 3}
       propertyPath: m_LocalScale.x
@@ -693,7 +693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4241866643649457908, guid: f5b1fa574cb5deb49a65ee34e7ffef4c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 173.39044
+      value: 154
       objectReference: {fileID: 0}
     - target: {fileID: 4241866643649457908, guid: f5b1fa574cb5deb49a65ee34e7ffef4c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -802,7 +802,7 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5
+    x: 0
     y: 0
     width: 0.5
     height: 1
@@ -814,7 +814,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -838,7 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 1
@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 649581020}
   - component: {fileID: 649581022}
   - component: {fileID: 649581021}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel - kontrolna ploca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -931,7 +931,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 370}
+  m_SizeDelta: {x: 0, y: 350}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &649581021
 MonoBehaviour:
@@ -983,7 +983,7 @@ GameObject:
   - component: {fileID: 672026439}
   - component: {fileID: 672026438}
   - component: {fileID: 672026437}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PowerSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1010,7 +1010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 355.00037}
+  m_AnchoredPosition: {x: -300, y: 320}
   m_SizeDelta: {x: 2560, y: 1440}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &672026437
@@ -1185,7 +1185,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748751048}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDamping: 1
   m_AngularDamping: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1303,7 +1303,7 @@ GameObject:
   - component: {fileID: 868044514}
   - component: {fileID: 868044516}
   - component: {fileID: 868044515}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fuel-bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1378,7 +1378,7 @@ GameObject:
   - component: {fileID: 881071980}
   - component: {fileID: 881071982}
   - component: {fileID: 881071981}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1516,7 +1516,7 @@ GameObject:
   - component: {fileID: 940212209}
   - component: {fileID: 940212208}
   - component: {fileID: 940212207}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1647,7 +1647,7 @@ GameObject:
   - component: {fileID: 975885968}
   - component: {fileID: 975885970}
   - component: {fileID: 975885969}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fuel-red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1878,15 +1878,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7768539143731497747, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 200
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 7768539143731497747, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7768539143731497747, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 200
+      value: 430
       objectReference: {fileID: 0}
     - target: {fileID: 7768539143731497747, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2024,7 +2024,7 @@ GameObject:
   - component: {fileID: 1086717814}
   - component: {fileID: 1086717816}
   - component: {fileID: 1086717815}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fuel-icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2099,7 +2099,7 @@ GameObject:
   - component: {fileID: 1124335777}
   - component: {fileID: 1124335779}
   - component: {fileID: 1124335778}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Speedometer-background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2123,7 +2123,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -2.4623356, y: -175}
-  m_SizeDelta: {x: 390, y: 323.4148}
+  m_SizeDelta: {x: 270, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1124335778
 MonoBehaviour:
@@ -2179,7 +2179,7 @@ GameObject:
   - component: {fileID: 1179637117}
   - component: {fileID: 1179637116}
   - component: {fileID: 1179637115}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fuel-text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2321,7 +2321,7 @@ GameObject:
   - component: {fileID: 1254487344}
   - component: {fileID: 1254487343}
   - component: {fileID: 1254487342}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Kontrolna Ploca - Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2379,7 +2379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 0.5
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
@@ -2398,7 +2398,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 600656437}
   m_PlaneDistance: 41.5
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2422,7 +2422,7 @@ GameObject:
   - component: {fileID: 1352563682}
   - component: {fileID: 1352563681}
   - component: {fileID: 1352563680}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fuel-Needle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2497,7 +2497,7 @@ GameObject:
   - component: {fileID: 1356813659}
   - component: {fileID: 1356813661}
   - component: {fileID: 1356813660}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: grey bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2572,7 +2572,7 @@ GameObject:
   - component: {fileID: 1434167529}
   - component: {fileID: 1434167531}
   - component: {fileID: 1434167530}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fuel-yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3035,7 +3035,7 @@ GameObject:
   - component: {fileID: 2005603895}
   - component: {fileID: 2005603894}
   - component: {fileID: 2005603893}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fuel-parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3121,8 +3121,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -330, y: 60}
-  m_SizeDelta: {x: 230, y: 230}
+  m_AnchoredPosition: {x: -300, y: 30}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2069156992
 GameObject:
@@ -3135,7 +3135,7 @@ GameObject:
   - component: {fileID: 2069156993}
   - component: {fileID: 2069156995}
   - component: {fileID: 2069156994}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OFF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3295,7 +3295,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -46, y: 200}
-  m_SizeDelta: {x: 339.271, y: 290.52496}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2126442153
 GameObject:
@@ -3340,7 +3340,7 @@ GameObject:
   - component: {fileID: 2133082777}
   - component: {fileID: 2133082779}
   - component: {fileID: 2133082778}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fuel-green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3426,15 +3426,15 @@ PrefabInstance:
       objectReference: {fileID: 1011695993}
     - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 200
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 50
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 5692153541681620995, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
       propertyPath: m_LocalRotation.w

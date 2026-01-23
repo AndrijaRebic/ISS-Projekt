@@ -93,6 +93,18 @@ public class MissileManualControl : MonoBehaviour
 
         Debug.Log($"MISSILE HIT: {collision.gameObject.name}");
 
+        TankHealth tank = collision.gameObject.GetComponentInParent<TankHealth>();
+        if (tank != null)
+        {
+            tank.TakeDamage(25f); 
+            Debug.Log("Tank health sada: " + tank.IsDead);
+
+             if (hitEffectPrefab != null)
+            {
+                Instantiate(hitEffectPrefab, collision.contacts[0].point, Quaternion.identity);
+            }
+        }
+
         Destroy(gameObject);
     }
 

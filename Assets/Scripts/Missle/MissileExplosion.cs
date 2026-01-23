@@ -5,9 +5,7 @@ public class MissileExplosion : MonoBehaviour
     public GameObject explosionPrefab;
     public float explosionLife = 2f;
 
-    private bool exploded = false;
-
-    /* void OnCollisionEnter(Collision collision)
+     /*void OnCollisionEnter(Collision collision)
     {
         if (exploded) return;
         exploded = true;
@@ -17,7 +15,7 @@ public class MissileExplosion : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("HIT: " + collision.gameObject.name);
+        Debug.Log("HIT: "+ collision.gameObject.name);
         Explode();
     }
 

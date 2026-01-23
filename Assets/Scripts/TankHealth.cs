@@ -34,13 +34,13 @@ public class TankHealth : MonoBehaviour
     }
 
     //samo za testiranje
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage(999f);
         }
-    }
+    }*/
 
     public void TakeDamage(float damage)
     {
