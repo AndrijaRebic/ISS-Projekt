@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4e80e30c4f3d8b645bd7f5b023df840f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316606
+  packageName: 'Modern Warfare: Missile system'
+  packageVersion: 1.0.1
+  assetPath: Assets/MODERN WARFARE/FBXs/Missle battery/Materials/Missile.mat
+  uploadId: 797794

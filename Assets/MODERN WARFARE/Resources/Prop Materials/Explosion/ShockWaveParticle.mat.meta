@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f88239865da4c79468e051ceb78c0317
+timeCreated: 1472113426
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316606
+  packageName: 'Modern Warfare: Missile system'
+  packageVersion: 1.0.1
+  assetPath: Assets/MODERN WARFARE/Resources/Prop Materials/Explosion/ShockWaveParticle.mat
+  uploadId: 797794

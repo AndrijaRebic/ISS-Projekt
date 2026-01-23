@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b2fb35da68d500b45b6ad43a31701bf8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316606
+  packageName: 'Modern Warfare: Missile system'
+  packageVersion: 1.0.1
+  assetPath: Assets/MODERN WARFARE/FBXs/RPG/Materials/Rocket.mat
+  uploadId: 797794

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 68c70a9f03d95d941a6479027191d730
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316606
+  packageName: 'Modern Warfare: Missile system'
+  packageVersion: 1.0.1
+  assetPath: Assets/MODERN WARFARE/FBXs/Missle battery/Materials/Radar.mat
+  uploadId: 797794

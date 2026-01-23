@@ -8,6 +8,8 @@ public class TankController : MonoBehaviour
     public float moveSpeed = 10f;
     public float turnSpeed = 150f;
 
+    public bool controlsEnabled = true;
+
     float moveInput;
     float turnInput;
 

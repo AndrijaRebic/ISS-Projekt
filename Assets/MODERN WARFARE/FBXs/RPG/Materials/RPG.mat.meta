@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d34a5aaeec995b64e8a5ad561f066a04
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316606
+  packageName: 'Modern Warfare: Missile system'
+  packageVersion: 1.0.1
+  assetPath: Assets/MODERN WARFARE/FBXs/RPG/Materials/RPG.mat
+  uploadId: 797794

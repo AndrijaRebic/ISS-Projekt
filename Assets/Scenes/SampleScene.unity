@@ -1991,6 +1991,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880828771}
   m_CullTransparentMesh: 1
+--- !u!1 &927626373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 927626374}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &927626374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927626373}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.12, y: -0.81, z: 16.598}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1340853744}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1012031852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2341,6 +2372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankController
   moveSpeed: 20
   turnSpeed: 100
+  controlsEnabled: 1
   isEngineOn: 0
 --- !u!54 &1138154658
 Rigidbody:
@@ -2514,6 +2546,11 @@ Transform:
   - {fileID: 657695074}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1331616551 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+  m_PrefabInstance: {fileID: 1626319921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1332931222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,6 +2676,37 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!1 &1340853743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5421877510675682020, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+  m_PrefabInstance: {fileID: 1626319921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1340853744 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 840184754805082069, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+  m_PrefabInstance: {fileID: 1626319921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1340853745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340853743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e94fd7533a71d46b27926b6065306a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LauncherFire
+  firePoint: {fileID: 927626374}
+  missilePrefab: {fileID: 8371340007317026248, guid: 472fe49dea222c9419c67a05c3c4038a, type: 3}
+  missileCamera: {fileID: 0}
+  missileCarrier: {fileID: 1340853744}
+  missileSpeed: 44
+  cloneScale: 0.1
+  spawnForwardOffset: 0.2
+  spawnUpOffset: 0
+  fireKey: 32
 --- !u!224 &1350407731 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4241866643649457908, guid: f5b1fa574cb5deb49a65ee34e7ffef4c, type: 3}
@@ -2780,6 +2848,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587794117}
   m_CullTransparentMesh: 1
+--- !u!1001 &1626319921
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1788270153}
+    m_Modifications:
+    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287271837643294979, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956250362264916921, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      propertyPath: m_Name
+      value: Rocket Launcher
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 840184754805082069, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 927626374}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5421877510675682020, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1340853745}
+  m_SourcePrefab: {fileID: 100100000, guid: c19e33956e70b034fa98fb92ba54be79, type: 3}
 --- !u!1 &1637486416
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,6 +3175,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766002130}
   m_CullTransparentMesh: 1
+--- !u!1 &1788270152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1788270153}
+  m_Layer: 0
+  m_Name: Team 12.2 (Rocket System) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1788270153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788270152}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.19516, y: -0, z: 2.41276}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1331616551}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915171304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3261,3 +3424,4 @@ SceneRoots:
   - {fileID: 1203797967}
   - {fileID: 1014191763}
   - {fileID: 1637486419}
+  - {fileID: 1788270153}
