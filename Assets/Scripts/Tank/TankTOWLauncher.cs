@@ -73,6 +73,11 @@ public class TankTOWLauncher : MonoBehaviour
 
         shm.aimReference = aimReference;
         shm.Launch(towMuzzle.forward, towLaunchSpeed);
+
+        if (TankAudioController.Instance != null)
+        {
+            TankAudioController.Instance.Play(TankAudioController.SoundType.TOWShoot);
+        }
     }
 
 }

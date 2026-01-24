@@ -2004,23 +2004,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankAudioController
   AllSounds:
-  - Type: 1
+  - Type: 3
     Clip: {fileID: 8300000, guid: 73f82ffe36f28c842b790e77bf458a72, type: 3}
     Volume: 1
     Source: {fileID: 0}
-  - Type: 2
+  - Type: 4
     Clip: {fileID: 8300000, guid: 3c82c9db23c204746b736243f62770ca, type: 3}
-    Volume: 0.5
+    Volume: 0.25
     Source: {fileID: 0}
-  - Type: 0
+  - Type: 1
     Clip: {fileID: 8300000, guid: fcae93408ee21f5429f9ef667c41b58f, type: 3}
-    Volume: 1
+    Volume: 0.8
     Source: {fileID: 0}
-  - Type: 3
+  - Type: 5
     Clip: {fileID: 8300000, guid: 0a78e6300d1139e40ad81eb14082739e, type: 3}
     Volume: 0.8
     Source: {fileID: 0}
-  SelectedSound: 2
+  - Type: 0
+    Clip: {fileID: 8300000, guid: 0be6d869551f98347b6bf4cf3ca3ff96, type: 3}
+    Volume: 0.8
+    Source: {fileID: 0}
+  - Type: 2
+    Clip: {fileID: 8300000, guid: 64fd39a65a52d5f4e80438db9b9dfa1f, type: 3}
+    Volume: 0.8
+    Source: {fileID: 0}
 --- !u!1 &1086717813
 GameObject:
   m_ObjectHideFlags: 0

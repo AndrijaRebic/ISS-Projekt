@@ -59,6 +59,9 @@ public class TankShooting : MonoBehaviour
                     cannonMuzzle.rotation
                 );
             }
+
+            if (TankAudioController.Instance != null)
+                TankAudioController.Instance.Play(TankAudioController.SoundType.CannonShoot);
         }
     }
 
@@ -90,6 +93,9 @@ public class TankShooting : MonoBehaviour
 
                 Destroy(flash, 0.1f);
             }
+
+            if (TankAudioController.Instance != null)
+                TankAudioController.Instance.Play(TankAudioController.SoundType.MachineGunShoot);
         }
     }
 }
