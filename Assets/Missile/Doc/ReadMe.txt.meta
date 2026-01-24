@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6c7938a029fba914c95ab0bc1d578768
+timeCreated: 1509889164
+licenseType: Store
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104264
+  packageName: Free 3D Missile
+  packageVersion: 1.0
+  assetPath: Assets/Missile/Doc/ReadMe.txt
+  uploadId: 722804
