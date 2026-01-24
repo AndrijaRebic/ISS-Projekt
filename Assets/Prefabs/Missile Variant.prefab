@@ -57,11 +57,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3b046d4a962de34c9c61a53dec3c596, type: 3}
---- !u!1 &4560733459884724804 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2662739758628630001, guid: c3b046d4a962de34c9c61a53dec3c596, type: 3}
-  m_PrefabInstance: {fileID: 1997638188074844085}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7124453746452049766 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8747729587700306131, guid: c3b046d4a962de34c9c61a53dec3c596, type: 3}
@@ -299,7 +294,7 @@ MonoBehaviour:
   lifeTime: 15
   hitEffectPrefab: {fileID: 1620140131458704099, guid: 57e5b83dfee152a47aedf7d83c83e9f5, type: 3}
   armDelay: 0.05
-  explosionPrefab: {fileID: 131768806135259449, guid: 691082ee5f00d044099fa61f412963dc, type: 3}
-  smokeTrailPrefab: {fileID: 4560733459884724804}
+  explosionPrefab: {fileID: 1620140131458704099, guid: 57e5b83dfee152a47aedf7d83c83e9f5, type: 3}
+  smokeTrailPrefab: {fileID: 7187393024123294025, guid: 5f2bc166e68df974bb952c4ec5c43454, type: 3}
   explosionLife: 2
   launcher: {fileID: 0}
