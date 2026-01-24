@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 26c29ef834c037840b436fdca6301ac6
+timeCreated: 1509302770
+licenseType: Store
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104264
+  packageName: Free 3D Missile
+  packageVersion: 1.0
+  assetPath: Assets/Missile/Demo.unity
+  uploadId: 722804

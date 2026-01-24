@@ -1930,6 +1930,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8273797401602894070, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1516219838}
+    - targetCorrespondingSourceObject: {fileID: 8273797401602894070, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1435956145}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6954883412887146921, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       insertIndex: -1
@@ -1952,6 +1955,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4471629934674839183, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1850223558}
+    - targetCorrespondingSourceObject: {fileID: 4471629934674839183, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1850223559}
   m_SourcePrefab: {fileID: 100100000, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
 --- !u!1 &1041496767
 GameObject:
@@ -2638,6 +2644,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434167528}
   m_CullTransparentMesh: 1
+--- !u!1 &1435956144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1435956145}
+  m_Layer: 0
+  m_Name: TankTOWLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1435956145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435956144}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.5299988, y: 1.04, z: 0.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1242270094}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1516219837
 GameObject:
   m_ObjectHideFlags: 0
@@ -2807,6 +2844,25 @@ MonoBehaviour:
   minPitch: -10
   maxPitch: 10
   tank: {fileID: 748751049}
+--- !u!114 &1850223559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850223556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8acc0f48cc27549b21bded73dbac65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankTOWLauncher
+  tank: {fileID: 748751049}
+  towMuzzle: {fileID: 1435956145}
+  towMissilePrefab: {fileID: 8371340007317026248, guid: 275b89623b731dd43bf17d8f7a494879, type: 3}
+  towLaunchSpeed: 80
+  towCooldown: 6
+  aimReference: {fileID: 1435956145}
+  fireKey: 113
 --- !u!1 &1905015048
 GameObject:
   m_ObjectHideFlags: 0
