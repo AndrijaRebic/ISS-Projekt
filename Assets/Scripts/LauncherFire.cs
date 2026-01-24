@@ -4,6 +4,13 @@ using System.Collections;
 
 public class LauncherFire : MonoBehaviour
 {
+    public enum GuidanceMode { ManualConstantVelocity, DynamicEulerForces }
+
+    [Header("Mode")]
+    public GuidanceMode guidanceMode = GuidanceMode.ManualConstantVelocity;
+    public KeyCode toggleModeKey = KeyCode.T;
+
+    [Header("Setup")]
     public Transform firePoint;
     public GameObject missilePrefab;
 
@@ -11,19 +18,30 @@ public class LauncherFire : MonoBehaviour
     public Transform missileCarrier; // launcher / nosač
     private GameObject activeMissile;
 
+    [Header("Missile params")]
     public float missileSpeed = 44f;
 
+    [Header("Spawn offsets")]
     public float cloneScale = 0.10f;
-
     public float spawnForwardOffset = 0.2f;
     public float spawnUpOffset = 0.00f;
 
+    [Header("Input")]
     public KeyCode fireKey = KeyCode.Space;
 
     public bool HasActiveMissile => activeMissile != null;
 
     void Update()
     {
+        if (Input.GetKeyDown(toggleModeKey))
+        {
+            guidanceMode = (guidanceMode == GuidanceMode.ManualConstantVelocity)
+                ? GuidanceMode.DynamicEulerForces
+                : GuidanceMode.ManualConstantVelocity;
+
+            Debug.Log($"[LauncherFire] Mode switched to: {guidanceMode}");
+        }
+
         if (Input.GetKeyDown(fireKey))
         {
             Debug.Log($"[LauncherFire] Space on GO='{gameObject.name}' instanceID={gameObject.GetInstanceID()} compID={GetInstanceID()} activeMissile={(activeMissile ? activeMissile.name : "null")}", this);
@@ -33,10 +51,9 @@ public class LauncherFire : MonoBehaviour
             Fire();
     }
 
-
     void Fire()
     {
-        Debug.Log($"Firing missile! missileSpeed={missileSpeed}");
+        Debug.Log($"Firing missile! missileSpeed={missileSpeed} mode={guidanceMode}");
 
         if (firePoint == null || missilePrefab == null)
         {
@@ -70,16 +87,26 @@ public class LauncherFire : MonoBehaviour
         // Owner collider (za ignore)
         Collider ownerCol = GetComponentInParent<Collider>();
 
-        // Manual control
+        // Prefer: prepoznaj koji skript je prisutan i pokreni pravi launch
         var manual = missile.GetComponent<MissileManualControl>();
-        if (manual != null)
+        var euler  = missile.GetComponent<MissileDynamicsEuler>();
+
+        if (guidanceMode == GuidanceMode.DynamicEulerForces && euler != null)
+        {
+            euler.launcher = this;
+            euler.motionMode = MissileDynamicsEuler.MotionMode.EulerForces; // obavezno Euler
+            euler.LaunchEuler(dir, missileSpeed, ownerCol);
+            return;
+        }
+
+        if (guidanceMode == GuidanceMode.ManualConstantVelocity && manual != null)
         {
             manual.launcher = this;
             manual.Launch(dir, missileSpeed, ownerCol);
             return;
         }
 
-        // Fallback ako nema manual skriptu
+        // Fallback: ako nema očekivanih skripti, bar pošalji rigidbody naprijed
         Rigidbody rb = missile.GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -88,8 +115,7 @@ public class LauncherFire : MonoBehaviour
         }
 
         rb.useGravity = false;
-
-        // ✅ PROMJENA: linearVelocity -> velocity
+        rb.isKinematic = false;
         rb.linearVelocity = dir.normalized * missileSpeed;
     }
 
@@ -102,10 +128,7 @@ public class LauncherFire : MonoBehaviour
             camFollow.target = missileCarrier;
     }
 
-    void ForceScale(Transform t)
-    {
-        t.localScale = Vector3.one * cloneScale;
-    }
+    void ForceScale(Transform t) => t.localScale = Vector3.one * cloneScale;
 
     IEnumerator ForceScaleNextFrame(Transform t)
     {

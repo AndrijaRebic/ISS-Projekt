@@ -215,6 +215,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1614679909019441283, guid: 78d9d281998b95140897021655827344, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1101224623223114924}
+    - targetCorrespondingSourceObject: {fileID: 1614679909019441283, guid: 78d9d281998b95140897021655827344, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7522355145722172270}
   m_SourcePrefab: {fileID: 100100000, guid: 78d9d281998b95140897021655827344, type: 3}
 --- !u!4 &3985548095372444176 stripped
 Transform:
@@ -296,5 +299,34 @@ MonoBehaviour:
   armDelay: 0.05
   explosionPrefab: {fileID: 1620140131458704099, guid: 57e5b83dfee152a47aedf7d83c83e9f5, type: 3}
   smokeTrailPrefab: {fileID: 7187393024123294025, guid: 5f2bc166e68df974bb952c4ec5c43454, type: 3}
+  explosionLife: 2
+  launcher: {fileID: 0}
+--- !u!114 &7522355145722172270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371340007317026248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fef6b89d2e38843af3aa48ca6f010f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MissileDynamicsEuler
+  motionMode: 0
+  mass: 5
+  thrustForce: 120
+  thrustOn: 1
+  toggleThrustKey: 127
+  useGravity: 1
+  gravity: 9.81
+  linearDrag: 0.2
+  useMouse: 0
+  turnRate: 120
+  lifeTime: 15
+  armDelay: 0.05
+  hitEffectPrefab: {fileID: 8371340007317026248}
+  explosionPrefab: {fileID: 0}
+  smokeTrailPrefab: {fileID: 0}
   explosionLife: 2
   launcher: {fileID: 0}
