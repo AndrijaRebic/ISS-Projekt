@@ -9,7 +9,7 @@ public class SimpleLever : MonoBehaviour
 
     private bool isDown = false;
     private float targetAngle;
-    public KeyCode toggleKey = KeyCode.E;
+    public KeyCode toggleKey = KeyCode.L;
 
      [Header("Tank Reference")]
     public TankController tank;
