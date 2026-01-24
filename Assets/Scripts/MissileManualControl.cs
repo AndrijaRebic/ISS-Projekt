@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class MissileManualControl : MonoBehaviour
@@ -15,12 +16,22 @@ public class MissileManualControl : MonoBehaviour
     [Header("Safety")]
     public float armDelay = 0.05f;
 
+    [Header("Effects")]
+    public GameObject explosionPrefab;
+    public GameObject smokeTrailPrefab;
+    public float explosionLife = 2f;
+    
+
     [Header("Callbacks")]
     public LauncherFire launcher;
 
     private Rigidbody rb;
     private Vector3 flyDir;
     private bool armed = false;
+     private bool isLaunched = false;
+    private bool hasExploded = false;
+    private GameObject smokeTrail;
+    
 
     void Awake()
     {
@@ -40,8 +51,29 @@ public class MissileManualControl : MonoBehaviour
         flyDir = transform.forward;
     }
 
+    void Start()
+    {
+        // Create but don't start smoke trail
+        if (smokeTrailPrefab != null)
+        {
+            smokeTrail = Instantiate(smokeTrailPrefab, transform.position,transform.rotation);
+            smokeTrail.transform.parent = transform;
+            ParticleSystem ps = smokeTrail.GetComponent<ParticleSystem>();
+            if (ps != null) { ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+             var renderer = ps.GetComponent<Renderer>();
+            if (renderer != null)
+                renderer.enabled = false;
+        }
+        
+        // Hide the entire smoke trail GameObject
+        smokeTrail.SetActive(false);
+        }
+    }
+
+
     public void Launch(Vector3 direction, float launchSpeed, Collider ownerCollider = null)
     {
+        if (isLaunched) return;
         flyDir = direction.normalized;
         speed = launchSpeed;
 
@@ -57,11 +89,39 @@ public class MissileManualControl : MonoBehaviour
 
         // ✅ UNITY 6
         rb.linearVelocity = flyDir * speed;
-
+        
         Invoke(nameof(Arm), armDelay);
+
+        isLaunched = true;
+
+         // Start smoke trail AFTER a tiny delay
+        StartCoroutine(StartSmokeTrail());
     }
 
     void Arm() => armed = true;
+
+     
+    
+
+     IEnumerator StartSmokeTrail()
+    {
+        // Wait for next frame - missile will have moved
+        yield return null;
+
+        if (smokeTrail != null  && !hasExploded)
+        {
+             smokeTrail.SetActive(true);
+             smokeTrail.transform.position = transform.position - transform.forward * 0.5f;
+            ParticleSystem ps = smokeTrail.GetComponent<ParticleSystem>();
+            if (ps != null) {
+                 ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                
+                 ps.Play();
+        }
+        }
+    
+    }
+
 
     void FixedUpdate()
     {
@@ -96,11 +156,23 @@ public class MissileManualControl : MonoBehaviour
         rb.MoveRotation(Quaternion.LookRotation(flyDir));
     }
 
+    void Update() {
+         // Update smoke trail position
+         if (smokeTrail != null && smokeTrail.activeSelf && !hasExploded)
+        {
+            smokeTrail.transform.position = transform.position - transform.forward * 0.5f;
+            smokeTrail.transform.rotation = transform.rotation;
+        }
+    }
+
+
     void OnCollisionEnter(Collision collision)
     {
         if (!armed) return;
 
         Debug.Log($"MISSILE HIT: {collision.gameObject.name}");
+
+        bool hitTarget = false;
 
         TankHealth tank = collision.gameObject.GetComponentInParent<TankHealth>();
         if (tank != null)
@@ -114,8 +186,70 @@ public class MissileManualControl : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+        Explode(hitTarget);
     }
+
+     void Explode(bool hitTarget)
+    {
+        hasExploded = true;
+        
+        // Explosion effect
+        if (explosionPrefab != null)
+        {
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            
+            ExplosionController controller = explosion.GetComponent<ExplosionController>();
+            if (controller != null)
+            {
+                controller.TriggerExplosion(transform.position, hitTarget);
+            }
+            else
+            {
+                Destroy(explosion, explosionLife);
+            }
+        }
+        
+        // Smoke trail cleanup
+        if (smokeTrail != null)
+        {
+            smokeTrail.transform.parent = null;
+            ParticleSystem ps = smokeTrail.GetComponent<ParticleSystem>();
+            if (ps != null)
+            {
+                var emission = ps.emission;
+                emission.enabled = false;
+            }
+            Destroy(smokeTrail, 5f);
+        }
+        
+        // Hide missile
+        HideMissile();
+        
+        // Destroy
+        Destroy(gameObject, 0.5f);
+        
+        if (launcher != null)
+            launcher.OnMissileDestroyed();
+    }
+
+
+    void HideMissile()
+    {
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        foreach (var renderer in renderers)
+            renderer.enabled = false;
+        
+        Collider col = GetComponent<Collider>();
+        if (col != null) col.enabled = false;
+        
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.isKinematic = true;
+            
+        }
+    }
+
 
     void OnDestroy()
     {
