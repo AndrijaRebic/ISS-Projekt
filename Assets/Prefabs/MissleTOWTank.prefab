@@ -85,6 +85,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1614679909019441283, guid: 78d9d281998b95140897021655827344, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8676286673589992631}
+    - targetCorrespondingSourceObject: {fileID: 1614679909019441283, guid: 78d9d281998b95140897021655827344, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8092185957553786530}
   m_SourcePrefab: {fileID: 100100000, guid: 78d9d281998b95140897021655827344, type: 3}
 --- !u!1 &8371340007317026248 stripped
 GameObject:
@@ -159,3 +162,16 @@ MonoBehaviour:
   aimReference: {fileID: 0}
   homingStrength: 0.5
   hitEffectPrefab: {fileID: 100008, guid: 1dbc518224e49f34095aab42fe05751a, type: 3}
+--- !u!114 &8092185957553786530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371340007317026248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3db067cb410054b9b7f39ff18940f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankProjectileDamage
+  damage: 20

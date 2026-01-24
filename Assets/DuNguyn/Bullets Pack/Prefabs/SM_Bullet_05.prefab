@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4892245142509390244}
   - component: {fileID: 4957099518451534577}
   - component: {fileID: 7863435153149853015}
+  - component: {fileID: -766559856887218497}
   m_Layer: 0
   m_Name: SM_Bullet_05
   m_TagString: Untagged
@@ -97,6 +98,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   hitEffectPrefab: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
   lifeTime: 5
+--- !u!114 &-766559856887218497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2989000923634411228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3db067cb410054b9b7f39ff18940f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankProjectileDamage
+  damage: 10
 --- !u!1 &3585594593242577515
 GameObject:
   m_ObjectHideFlags: 0
