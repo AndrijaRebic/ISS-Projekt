@@ -1,56 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class TankController : MonoBehaviour
 {
     public float moveSpeed = 10f;
     public float turnSpeed = 150f;
 
+    public float forceMultiplier = 200f;
+    public float torqueMultiplier = 200f;
+
     public bool controlsEnabled = true;
+
+    [HideInInspector]
+    public bool isEngineOn = false;
 
     float moveInput;
     float turnInput;
 
     Rigidbody rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
-    [HideInInspector]
-    public bool isEngineOn = false;
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
-        if (!isEngineOn)
+        if (!isEngineOn || !controlsEnabled)
         {
             moveInput = 0f;
             turnInput = 0f;
             return;
         }
 
-
         moveInput = 0f;
         turnInput = 0f;
 
-        if (Input.GetKey(KeyCode.W)) moveInput = 1f;
-        if (Input.GetKey(KeyCode.S)) moveInput = -1f;
+        // Arrow key controls
+        if (Input.GetKey(KeyCode.UpArrow)) moveInput = 1f;   // forward
+        if (Input.GetKey(KeyCode.DownArrow)) moveInput = -1f;  // backward
 
-        if (Input.GetKey(KeyCode.A)) turnInput = -1f;
-        if (Input.GetKey(KeyCode.D)) turnInput = 1f;
-
+        if (Input.GetKey(KeyCode.LeftArrow)) turnInput = -1f;  // turn left
+        if (Input.GetKey(KeyCode.RightArrow)) turnInput = 1f;   // turn right
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (!isEngineOn) return;
-        rb.AddForce(transform.forward * moveInput * moveSpeed, ForceMode.Force);
-        rb.AddTorque(Vector3.up * turnInput * turnSpeed, ForceMode.Force);
+
+
+
+        rb.AddForce(transform.forward * moveInput * moveSpeed * forceMultiplier,
+                    ForceMode.Force);                                  // [web:38][web:96]
+
+        rb.AddTorque(Vector3.up * turnInput * turnSpeed * torqueMultiplier,
+                     ForceMode.Force);                                 // [web:84][web:96]
     }
 }

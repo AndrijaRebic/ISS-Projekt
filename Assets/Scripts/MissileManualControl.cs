@@ -65,13 +65,23 @@ public class MissileManualControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        float yaw = Input.GetAxis("Horizontal");
-        float pitch = Input.GetAxis("Vertical");
+        float yaw = 0f;
+        float pitch = 0f;
 
         if (useMouse)
         {
+
             yaw = Input.GetAxis("Mouse X");
             pitch = -Input.GetAxis("Mouse Y");
+        }
+        else
+        {
+
+            if (Input.GetKey(KeyCode.A)) yaw = -1f;
+            if (Input.GetKey(KeyCode.D)) yaw = 1f;
+
+            if (Input.GetKey(KeyCode.W)) pitch = 1f;
+            if (Input.GetKey(KeyCode.S)) pitch = -1f;
         }
 
         Quaternion delta = Quaternion.Euler(
@@ -82,7 +92,6 @@ public class MissileManualControl : MonoBehaviour
 
         flyDir = (delta * flyDir).normalized;
 
-        // ✅ UNITY 6
         rb.linearVelocity = flyDir * speed;
         rb.MoveRotation(Quaternion.LookRotation(flyDir));
     }
@@ -96,10 +105,10 @@ public class MissileManualControl : MonoBehaviour
         TankHealth tank = collision.gameObject.GetComponentInParent<TankHealth>();
         if (tank != null)
         {
-            tank.TakeDamage(25f); 
+            tank.TakeDamage(25f);
             Debug.Log("Tank health sada: " + tank.IsDead);
 
-             if (hitEffectPrefab != null)
+            if (hitEffectPrefab != null)
             {
                 Instantiate(hitEffectPrefab, collision.contacts[0].point, Quaternion.identity);
             }

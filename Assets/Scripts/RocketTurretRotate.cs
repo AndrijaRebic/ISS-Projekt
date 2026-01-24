@@ -60,13 +60,23 @@ public class RocketTurretRotate : MonoBehaviour
         if (lockWhileMissileActive && launcherFire != null && launcherFire.HasActiveMissile)
             return;
 
-        float yawInput = Input.GetAxis("Horizontal");
-        float pitchInput = Input.GetAxis("Vertical");
+        float yawInput = 0f;
+        float pitchInput = 0f;
 
         if (useMouse)
         {
             yawInput = Input.GetAxis("Mouse X");
             pitchInput = -Input.GetAxis("Mouse Y");
+        }
+
+        else
+        {
+            // WASD ONLY for launcher rotation
+            if (Input.GetKey(KeyCode.A)) yawInput = -1f;
+            if (Input.GetKey(KeyCode.D)) yawInput = 1f;
+
+            if (Input.GetKey(KeyCode.W)) pitchInput = 1f;
+            if (Input.GetKey(KeyCode.S)) pitchInput = -1f;
         }
 
         transform.Rotate(0f, yawInput * yawSpeed * Time.deltaTime, 0f, Space.Self);

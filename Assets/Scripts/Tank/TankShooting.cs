@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TankShooting : MonoBehaviour
-{   
+{
     [Header("Engine State")]
     public TankController tank;
 
@@ -24,7 +24,7 @@ public class TankShooting : MonoBehaviour
     float machineGunTimer;
 
     void Update()
-    {   
+    {
         if (tank != null && !tank.isEngineOn)
             return;
 
@@ -37,7 +37,7 @@ public class TankShooting : MonoBehaviour
 
     void HandleCannon()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && cannonTimer >= cannonCooldown)
+        if (Input.GetMouseButtonDown(0) && cannonTimer >= cannonCooldown)
         {
             cannonTimer = 0f;
 
@@ -64,7 +64,7 @@ public class TankShooting : MonoBehaviour
 
     void HandleMachineGun()
     {
-        if (Input.GetKey(KeyCode.M) && machineGunTimer >= machineGunFireRate)
+        if (Input.GetMouseButtonDown(1) && machineGunTimer >= machineGunFireRate)
         {
             machineGunTimer = 0f;
 

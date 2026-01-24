@@ -1093,8 +1093,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1867bbff4f5a172458516d3bce359581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankController
-  moveSpeed: 20
-  turnSpeed: 100
+  moveSpeed: 10
+  turnSpeed: 150
+  forceMultiplier: 200
+  torqueMultiplier: 100
   controlsEnabled: 1
   isEngineOn: 0
 --- !u!114 &748751050
@@ -2799,9 +2801,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16a6f3533dc9fca43866927ae9e1ff38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretController
-  rotationSpeed: 60
+  rotationSpeed: 30
   cannon: {fileID: 1242270094}
-  cannonSpeed: 30
+  cannonSpeed: 10
   minPitch: -10
   maxPitch: 10
   tank: {fileID: 748751049}
@@ -3418,7 +3420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4641026733752845560, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
       propertyPath: useMouse
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4805160874920475229, guid: 2ab4e2a182d14774dba0483dbbbc29ca, type: 3}
       propertyPath: missileCamera
