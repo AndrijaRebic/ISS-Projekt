@@ -9,8 +9,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7522982781472501600, guid: 017c9fcd02ca72049806a4014da0bea6, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522982781472501600, guid: 017c9fcd02ca72049806a4014da0bea6, type: 3}
       propertyPath: lengthInSec
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7522982781472501600, guid: 017c9fcd02ca72049806a4014da0bea6, type: 3}
       propertyPath: UVModule.tilesX
@@ -29,8 +33,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7522982781472501600, guid: 017c9fcd02ca72049806a4014da0bea6, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522982781472501600, guid: 017c9fcd02ca72049806a4014da0bea6, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 5
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7522982781472501600, guid: 017c9fcd02ca72049806a4014da0bea6, type: 3}
       propertyPath: InitialModule.startRotation.scalar
@@ -166,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522982781472501662, guid: 017c9fcd02ca72049806a4014da0bea6, type: 3}
       propertyPath: m_Name
-      value: Smoke 1
+      value: Smoke 2
       objectReference: {fileID: 0}
     - target: {fileID: 7522982781472501663, guid: 017c9fcd02ca72049806a4014da0bea6, type: 3}
       propertyPath: m_Pivot.y
