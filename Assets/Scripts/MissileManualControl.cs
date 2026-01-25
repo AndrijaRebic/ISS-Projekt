@@ -62,7 +62,7 @@ public class MissileManualControl : MonoBehaviour
         // Create but don't start smoke trail
         if (smokeTrailPrefab != null)
         {
-            smokeTrail = Instantiate(smokeTrailPrefab, transform.position,transform.rotation);
+            smokeTrail = Instantiate(smokeTrailPrefab, transform.position, transform.rotation);
             smokeTrail.transform.parent = transform;
             ParticleSystem ps = smokeTrail.GetComponent<ParticleSystem>();
             if (ps != null) { ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
@@ -166,7 +166,7 @@ public class MissileManualControl : MonoBehaviour
          // Update smoke trail position
          if (smokeTrail != null && smokeTrail.activeSelf && !hasExploded)
         {
-            smokeTrail.transform.position = transform.position - transform.forward * 0.5f;
+            smokeTrail.transform.position = transform.position;
             smokeTrail.transform.rotation = transform.rotation;
         }
     }

@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissileSmokeTrail
       objectReference: {fileID: 0}
+    - target: {fileID: 5897490421385844325, guid: c3b046d4a962de34c9c61a53dec3c596, type: 3}
+      propertyPath: simulationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897490421385844325, guid: c3b046d4a962de34c9c61a53dec3c596, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897490421385844325, guid: c3b046d4a962de34c9c61a53dec3c596, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8747729587700306131, guid: c3b046d4a962de34c9c61a53dec3c596, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.048816465
@@ -288,14 +300,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f32ddc11f4ad00e4ab16fbbb3e3ced0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MissileManualControl
-  speed: 45
+  speed: 0
   turnRate: 120
   useMouse: 0
   lifeTime: 45
   hitEffectPrefab: {fileID: 1620140131458704099, guid: 57e5b83dfee152a47aedf7d83c83e9f5, type: 3}
   armDelay: 0.05
   explosionPrefab: {fileID: 1620140131458704099, guid: 57e5b83dfee152a47aedf7d83c83e9f5, type: 3}
-  smokeTrailPrefab: {fileID: 7187393024123294025, guid: 5f2bc166e68df974bb952c4ec5c43454, type: 3}
+  smokeTrailPrefab: {fileID: 2662739758628630001, guid: c3b046d4a962de34c9c61a53dec3c596, type: 3}
   explosionLife: 2
   explosionSound: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
   explosionSoundResourcesPath: Free Pack/Explosion 1
