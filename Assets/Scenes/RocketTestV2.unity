@@ -3343,7 +3343,7 @@ MonoBehaviour:
   maxCharges: 100
   cooldown: 1
   audioSource: {fileID: 1941017646}
-  smokeFireClip: {fileID: 8300000, guid: fcae93408ee21f5429f9ef667c41b58f, type: 3}
+  smokeFireClip: {fileID: 8300000, guid: 3f9dc6a0da554034b820ebf0416d8855, type: 3}
 --- !u!82 &1941017646
 AudioSource:
   m_ObjectHideFlags: 0
