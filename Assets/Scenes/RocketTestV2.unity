@@ -1211,6 +1211,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7768539143731497747, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
   m_PrefabInstance: {fileID: 1038544753}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &748751056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748751048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8840a8acb5ab854886c1a18e8b341e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankRandomSpawn
+  positivePosition: {x: 700, y: 700}
+  negativePosition: {x: 100, y: 100}
+  heightOfCheck: 150
+  rangeOfCheck: 1000
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &819609663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,7 +1578,7 @@ MonoBehaviour:
   upAngle: 150
   downAngle: 70
   rotationSpeed: 5
-  toggleKey: 101
+  toggleKey: 111
   tank: {fileID: 748751049}
 --- !u!65 &940212208
 BoxCollider:
@@ -1888,7 +1907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7768539143731497747, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 430
+      value: 365.9
       objectReference: {fileID: 0}
     - target: {fileID: 7768539143731497747, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1952,6 +1971,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6954883412887146921, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       insertIndex: -1
       addedObject: {fileID: 748751050}
+    - targetCorrespondingSourceObject: {fileID: 6954883412887146921, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 748751056}
     - targetCorrespondingSourceObject: {fileID: 4471629934674839183, guid: 7140d6bd1a3d53b4cb6f0f05526d7489, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1850223558}
