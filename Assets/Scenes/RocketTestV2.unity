@@ -239,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000014509406, y: -0.000000004590975, z: -6.6612325e-17, w: 1}
-  m_LocalPosition: {x: 448.29, y: 2.6, z: 440}
+  m_LocalPosition: {x: 448.29, y: 2.6, z: 375.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1099,6 +1099,16 @@ MonoBehaviour:
   torqueMultiplier: 100
   controlsEnabled: 1
   isEngineOn: 0
+  model: 0
+  toggleKey: 108
+  maxDriveForce: 8000
+  turnRateDeg: 90
+  lateralGrip: 2000
+  extraForwardDamping: 0
+  throttleRise: 2.5
+  throttleFall: 4
+  tractionMu: 2.06
+  turnDriveReduction: 0.25
 --- !u!114 &748751050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3680,13 +3690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03e8739558d479469cb70da98ed3d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MissileExplosion
-  explosionPrefab: {fileID: 0}
-  explosionLife: 2
-  explosionSound: {fileID: 0}
-  explosionSoundResourcesPath: Free Pack/Explosion 1
-  explosionAudioVolume: 1
-  explosionMinDistance: 1
-  explosionMaxDistance: 500
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
