@@ -20,6 +20,13 @@ public class MissileManualControl : MonoBehaviour
     public GameObject explosionPrefab;
     public GameObject smokeTrailPrefab;
     public float explosionLife = 2f;
+    [Header("Audio")]
+    public AudioClip explosionSound;
+    public string explosionSoundResourcesPath = "Free Pack/Explosion 1";
+    public float explosionAudioVolume = 1f;
+    public float explosionMinDistance = 1f;
+    public float explosionMaxDistance = 500f;
+    
 
     [Header("Callbacks")]
     public LauncherFire launcher;
@@ -188,6 +195,14 @@ public class MissileManualControl : MonoBehaviour
                 Destroy(explosion, explosionLife);
         }
 
+        // Play explosion sound using helper (Inspector clip preferred, otherwise Resources fallback)
+        AudioClip clip = explosionSound;
+        if (clip == null && !string.IsNullOrEmpty(explosionSoundResourcesPath))
+            clip = Resources.Load<AudioClip>(explosionSoundResourcesPath);
+        if (clip != null)
+            AudioUtil.Play3DClipAtPosition(clip, transform.position, explosionAudioVolume, explosionMinDistance, explosionMaxDistance);
+
+        // Smoke trail cleanup
         if (smokeTrail != null)
         {
             smokeTrail.transform.parent = null;

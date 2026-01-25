@@ -6,6 +6,9 @@ public class ExplosionController : MonoBehaviour
     [Header("Particle Systems")]
     public ParticleSystem explosionParticles;
     public ParticleSystem smokeParticles;
+    [Header("Audio")]
+    public AudioClip explosionSound;
+    public string explosionSoundResourcesPath = "Free Pack/Explosion 1";
     
     [Header("Settings")]
     public float destroyDelay = 3f;
@@ -43,6 +46,17 @@ public class ExplosionController : MonoBehaviour
         transform.position = position;
         
         // Start coroutine
+        // Play sound at position if available (Inspector clip preferred, otherwise Resources fallback)
+        AudioClip clipToPlay = explosionSound;
+        if (clipToPlay == null && !string.IsNullOrEmpty(explosionSoundResourcesPath))
+        {
+            clipToPlay = Resources.Load<AudioClip>(explosionSoundResourcesPath);
+        }
+        if (clipToPlay != null)
+        {
+            AudioSource.PlayClipAtPoint(clipToPlay, position);
+        }
+
         StartCoroutine(PlayExplosionSequence(hitTarget));
     }
     

@@ -294,12 +294,17 @@ MonoBehaviour:
   speed: 45
   turnRate: 120
   useMouse: 0
-  lifeTime: 15
+  lifeTime: 45
   hitEffectPrefab: {fileID: 1620140131458704099, guid: 57e5b83dfee152a47aedf7d83c83e9f5, type: 3}
   armDelay: 0.05
   explosionPrefab: {fileID: 1620140131458704099, guid: 57e5b83dfee152a47aedf7d83c83e9f5, type: 3}
   smokeTrailPrefab: {fileID: 7187393024123294025, guid: 5f2bc166e68df974bb952c4ec5c43454, type: 3}
   explosionLife: 2
+  explosionSound: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
+  explosionSoundResourcesPath: Free Pack/Explosion 1
+  explosionAudioVolume: 0.2
+  explosionMinDistance: 1000
+  explosionMaxDistance: 1000
   launcher: {fileID: 0}
 --- !u!114 &7522355145722172270
 MonoBehaviour:
