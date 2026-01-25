@@ -3,7 +3,7 @@ using UnityEngine;
 public class RocketTurretRotate : MonoBehaviour
 {
     [Header("Refs")]
-    public LauncherFire launcherFire;   // može ostati prazno, auto će naći
+    public LauncherFire launcherFire;   
     public Transform pitchPivot;
 
     [Header("Rotation speeds")]
@@ -24,14 +24,14 @@ public class RocketTurretRotate : MonoBehaviour
 
     void Awake()
     {
-        // uvijek kreni s ugašenim mouse inputom
+        
         useMouse = false;
 
-        // ✅ auto nađi LauncherFire u parentima ako nije dodijeljen
+        
         if (launcherFire == null)
             launcherFire = GetComponentInParent<LauncherFire>();
 
-        // (opcionalno) auto nađi pitch pivot ako nije dodijeljen
+        
         if (pitchPivot == null)
         {
             var all = GetComponentsInChildren<Transform>(true);
@@ -56,7 +56,7 @@ public class RocketTurretRotate : MonoBehaviour
 
     void Update()
     {
-        // ✅ LOCK dok kontroliraš raketu (dok postoji aktivna raketa)
+        
         if (lockWhileMissileActive && launcherFire != null && launcherFire.HasActiveMissile)
             return;
 
@@ -71,7 +71,7 @@ public class RocketTurretRotate : MonoBehaviour
 
         else
         {
-            // WASD ONLY for launcher rotation
+        
             if (Input.GetKey(KeyCode.A)) yawInput = -1f;
             if (Input.GetKey(KeyCode.D)) yawInput = 1f;
 

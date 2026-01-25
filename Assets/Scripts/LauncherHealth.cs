@@ -31,7 +31,7 @@ public class LauncherHealth : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
-        // 🔥 ODMAH NESTANI
+        
         Destroy(gameObject);
     }
 }
