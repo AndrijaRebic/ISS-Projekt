@@ -154,7 +154,7 @@ public class MissileManualControl : MonoBehaviour
     {
         if (smokeTrail != null && smokeTrail.activeSelf && !hasExploded)
         {
-            smokeTrail.transform.position = transform.position - transform.forward * 0.5f;
+            smokeTrail.transform.position = transform.position;
             smokeTrail.transform.rotation = transform.rotation;
         }
     }
