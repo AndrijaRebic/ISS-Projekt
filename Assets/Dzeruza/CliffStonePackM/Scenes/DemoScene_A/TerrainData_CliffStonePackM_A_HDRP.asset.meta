@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: afe05e145d5424544af5bb470ce3ce6b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 15600000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 327619
+  packageName: CliffStonePackM
+  packageVersion: 1.0
+  assetPath: Assets/Dzeruza/CliffStonePackM/Scenes/DemoScene_A/TerrainData_CliffStonePackM_A_HDRP.asset
+  uploadId: 784630

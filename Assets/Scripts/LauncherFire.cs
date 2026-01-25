@@ -20,6 +20,13 @@ public class LauncherFire : MonoBehaviour
 
     public KeyCode fireKey = KeyCode.Space;
 
+    [Header("Audio")]
+    public AudioClip fireSound;
+    public string fireSoundResourcesPath = "Free Pack/MissileShot";
+    public float fireAudioVolume = 1f;
+    public float fireMinDistance = 1f;
+    public float fireMaxDistance = 50f;
+
     public bool HasActiveMissile => activeMissile != null;
 
     void Update()
@@ -52,6 +59,17 @@ public class LauncherFire : MonoBehaviour
 
         GameObject missile = Instantiate(missilePrefab, spawnPos, spawnRot);
         activeMissile = missile;
+
+        // Play 3D launch sound at spawn position
+        AudioClip clipToPlay = fireSound;
+        if (clipToPlay == null && !string.IsNullOrEmpty(fireSoundResourcesPath))
+        {
+            clipToPlay = Resources.Load<AudioClip>(fireSoundResourcesPath);
+        }
+        if (clipToPlay != null)
+        {
+            Play3DClipAtPosition(clipToPlay, spawnPos, fireAudioVolume, fireMinDistance, fireMaxDistance);
+        }
 
         // Kamera prati raketu
         var camFollow = missileCamera != null ? missileCamera.GetComponent<MissileCameraFollow>() : null;
@@ -111,5 +129,21 @@ public class LauncherFire : MonoBehaviour
     {
         yield return null;
         if (t != null) ForceScale(t);
+    }
+
+    // Helper - create temporary AudioSource at position with 3D settings
+    void Play3DClipAtPosition(AudioClip clip, Vector3 position, float volume, float minDistance, float maxDistance)
+    {
+        GameObject go = new GameObject("OneShotAudio_Fire");
+        go.transform.position = position;
+        AudioSource src = go.AddComponent<AudioSource>();
+        src.clip = clip;
+        src.spatialBlend = 1f; // fully 3D
+        src.volume = Mathf.Clamp01(volume);
+        src.minDistance = Mathf.Max(0.01f, minDistance);
+        src.maxDistance = Mathf.Max(src.minDistance + 0.01f, maxDistance);
+        src.rolloffMode = AudioRolloffMode.Logarithmic;
+        src.Play();
+        Destroy(go, clip.length + 0.1f);
     }
 }
