@@ -193,6 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e94fd7533a71d46b27926b6065306a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LauncherFire
+  guidanceMode: 0
+  toggleModeKey: 116
   firePoint: {fileID: 8739195388396681472}
   missilePrefab: {fileID: 8371340007317026248, guid: 472fe49dea222c9419c67a05c3c4038a, type: 3}
   missileCamera: {fileID: 0}
@@ -202,6 +204,11 @@ MonoBehaviour:
   spawnForwardOffset: 0.2
   spawnUpOffset: 0
   fireKey: 32
+  fireSound: {fileID: 0}
+  fireSoundResourcesPath: Free Pack/MissileShot
+  fireAudioVolume: 1
+  fireMinDistance: 1
+  fireMaxDistance: 50
 --- !u!1 &3154196256055368985
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +254,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe90fbed0f74c9429ac1f93192dad15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  launcherFire: {fileID: 0}
+  pitchPivot: {fileID: 0}
+  yawSpeed: 80
+  pitchSpeed: 50
+  minPitch: -25
+  maxPitch: 0
+  useMouse: 0
+  lockWhileMissileActive: 1
 --- !u!1 &3429141014423932750
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e94fd7533a71d46b27926b6065306a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LauncherFire
+  guidanceMode: 0
+  toggleModeKey: 116
   firePoint: {fileID: 8739195388396681472}
   missilePrefab: {fileID: 8371340007317026248, guid: 472fe49dea222c9419c67a05c3c4038a, type: 3}
   missileCamera: {fileID: 0}
@@ -602,3 +619,8 @@ MonoBehaviour:
   spawnForwardOffset: 0.2
   spawnUpOffset: 0
   fireKey: 32
+  fireSound: {fileID: 0}
+  fireSoundResourcesPath: Free Pack/MissileShot
+  fireAudioVolume: 1
+  fireMinDistance: 1
+  fireMaxDistance: 50
