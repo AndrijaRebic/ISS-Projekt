@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class BradleySmokeLauncher : MonoBehaviour
 {
+
+    public TankController tank;
+
     [Header("Smoke")]
     public GameObject smokePrefab;
     public Transform[] launchPoints;
@@ -21,6 +24,7 @@ public class BradleySmokeLauncher : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        if (!tank.isEngineOn) return;
 
         if (Input.GetKeyDown(smokeKey))
             TryDeploySmoke();
