@@ -342,8 +342,18 @@ MonoBehaviour:
   turnRate: 120
   lifeTime: 15
   armDelay: 0.05
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  sphereRadius: 0.15
+  skin: 0.02
   hitEffectPrefab: {fileID: 8371340007317026248}
-  explosionPrefab: {fileID: 0}
-  smokeTrailPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 1620140131458704099, guid: 57e5b83dfee152a47aedf7d83c83e9f5, type: 3}
+  smokeTrailPrefab: {fileID: 2662739758628630001, guid: c3b046d4a962de34c9c61a53dec3c596, type: 3}
   explosionLife: 2
+  explosionSound: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
+  explosionSoundResourcesPath: Free Pack/Explosion 1
+  explosionAudioVolume: 0.2
+  explosionMinDistance: 1000
+  explosionMaxDistance: 1000
   launcher: {fileID: 0}

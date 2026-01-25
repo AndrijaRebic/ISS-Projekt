@@ -146,6 +146,7 @@ public class MissileManualControl : MonoBehaviour
 
         flyDir = (delta * flyDir).normalized;
 
+        rb.isKinematic = false;
         rb.linearVelocity = flyDir * speed;
         rb.MoveRotation(Quaternion.LookRotation(flyDir));
     }
@@ -161,7 +162,7 @@ public class MissileManualControl : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (!armed) return;
+        if (!armed || hasExploded) return;
 
         Debug.Log($"MISSILE HIT: {collision.gameObject.name}");
 
@@ -182,6 +183,7 @@ public class MissileManualControl : MonoBehaviour
 
     void Explode(bool hitTarget)
     {
+        if (hasExploded) return;
         hasExploded = true;
 
         if (explosionPrefab != null)

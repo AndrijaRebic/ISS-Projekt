@@ -107,12 +107,12 @@ public class LauncherFire : MonoBehaviour
 
         // Prefer: prepoznaj koji skript je prisutan i pokreni pravi launch
         var manual = missile.GetComponent<MissileManualControl>();
-        var euler  = missile.GetComponent<MissileDynamicsEuler>();
+        var euler  = missile.GetComponent<MissileDynamicEuler>();
 
         if (guidanceMode == GuidanceMode.DynamicEulerForces && euler != null)
         {
             euler.launcher = this;
-            euler.motionMode = MissileDynamicsEuler.MotionMode.EulerForces; // obavezno Euler
+            euler.motionMode = MissileDynamicEuler.MotionMode.EulerForces; // obavezno Euler
             euler.LaunchEuler(dir, missileSpeed, ownerCol);
             return;
         }

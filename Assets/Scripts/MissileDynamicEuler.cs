@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
-public class MissileDynamicsEuler : MonoBehaviour
+public class MissileDynamicEuler : MonoBehaviour
 {
     public enum MotionMode { EulerForces, UnityRigidbody }
 
@@ -11,18 +11,18 @@ public class MissileDynamicsEuler : MonoBehaviour
 
     [Header("Mass/Forces")]
     public float mass = 5f;
-    public float thrustForce = 120f;      // “pogonska sila” naprijed
+    public float thrustForce = 200f;      // “pogonska sila” naprijed
     public bool thrustOn = true;
     public KeyCode toggleThrustKey = KeyCode.M;
 
     [Header("Aero/Gravity")]
-    public bool useGravity = false;
+    public bool useGravity = true;
     public float gravity = 9.81f;
-    public float linearDrag = 0.2f;       // u Euler modu: Fdrag = -k*v
+    public float linearDrag = 0.1f;       // u Euler modu: Fdrag = -k*v
 
     [Header("Guidance (same as a)")]
     public bool useMouse = false;
-    public float turnRate = 120f;
+    public float turnRate = 80f;
 
     [Header("Lifetime")]
     public float lifeTime = 15f;
@@ -35,13 +35,18 @@ public class MissileDynamicsEuler : MonoBehaviour
     public float sphereRadius = 0.15f;    // ako je 0 -> auto iz collidera
     public float skin = 0.02f;            // mali razmak prije kontakta
 
-    [Header("FX")]
-    public GameObject hitEffectPrefab;
-
     [Header("Effects")]
+    public GameObject hitEffectPrefab;
     public GameObject explosionPrefab;
     public GameObject smokeTrailPrefab;
     public float explosionLife = 2f;
+
+    [Header("Audio")]
+    public AudioClip explosionSound;
+    public string explosionSoundResourcesPath = "Free Pack/Explosion 1";
+    public float explosionAudioVolume = 1f;
+    public float explosionMinDistance = 1f;
+    public float explosionMaxDistance = 500f;
 
     [Header("Callbacks")]
     public LauncherFire launcher;
@@ -174,34 +179,6 @@ public class MissileDynamicsEuler : MonoBehaviour
         if (Input.GetKeyDown(toggleThrustKey))
             thrustOn = !thrustOn;
 
-        // upravljanje orijentacijom (bez momenata)
-        float yaw = 0f;
-        float pitch = 0f;
-
-        if (useMouse)
-        {
-            yaw = Input.GetAxis("Mouse X");
-            pitch = -Input.GetAxis("Mouse Y");
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.A)) yaw = -1f;
-            if (Input.GetKey(KeyCode.D)) yaw = 1f;
-            if (Input.GetKey(KeyCode.W)) pitch = 1f;
-            if (Input.GetKey(KeyCode.S)) pitch = -1f;
-        }
-
-        float dt = Time.deltaTime;
-
-        Quaternion delta = Quaternion.Euler(
-            pitch * turnRate * dt,
-            yaw * turnRate * dt,
-            0f
-        );
-
-        flyDir = (delta * flyDir).normalized;
-        transform.rotation = Quaternion.LookRotation(flyDir);
-
         // update smoke pose
         if (smokeTrail != null && smokeTrail.activeSelf)
         {
@@ -214,7 +191,45 @@ public class MissileDynamicsEuler : MonoBehaviour
     {
         if (!isLaunched || hasExploded) return;
 
+        // upravljanje orijentacijom (bez momenata) - samo yaw
+        float yaw = 0f;
+
+        if (useMouse)
+        {
+            yaw = Input.GetAxis("Mouse X");
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.A)) yaw = -1f;
+            if (Input.GetKey(KeyCode.D)) yaw = 1f;
+        }
+
         float dt = Time.fixedDeltaTime;
+
+        Quaternion delta = Quaternion.Euler(
+            0f,
+            yaw * turnRate * dt,
+            0f
+        );
+
+        flyDir = (delta * flyDir).normalized;
+
+        // When not controlling, return to initial forward direction for natural behavior
+        if (yaw == 0f)
+        {
+            flyDir = transform.forward.normalized;
+        }
+
+        // Update velocity direction for path change without rotating the missile, preserving y component for gravity
+        if (vel.magnitude > 0.01f)
+        {
+            float horizontalSpeed = new Vector3(vel.x, 0, vel.z).magnitude;
+            vel = new Vector3(flyDir.x * horizontalSpeed, vel.y, flyDir.z * horizontalSpeed);
+        }
+
+        // Set rotation to face the direction, like MissileManualControl, with smoothing
+        Quaternion targetRotation = Quaternion.LookRotation(flyDir);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 5f);
 
         // Ako koristiš UnityRigidbody mod, OnCollisionEnter radi normalno
         if (motionMode == MotionMode.UnityRigidbody)
@@ -227,6 +242,14 @@ public class MissileDynamicsEuler : MonoBehaviour
                 rb.AddForce(transform.forward * thrustForce, ForceMode.Force);
 
             rb.linearDamping = linearDrag;
+
+            // Update velocity direction for path change without rotating the missile, preserving y component for gravity
+            if (rb.linearVelocity.magnitude > 0.01f)
+            {
+                float horizontalSpeed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
+                rb.linearVelocity = new Vector3(flyDir.x * horizontalSpeed, rb.linearVelocity.y, flyDir.z * horizontalSpeed);
+            }
+
             return;
         }
 
@@ -333,6 +356,13 @@ public class MissileDynamicsEuler : MonoBehaviour
                 Destroy(explosion, explosionLife);
         }
 
+        // Play explosion sound
+        AudioClip clip = explosionSound;
+        if (clip == null && !string.IsNullOrEmpty(explosionSoundResourcesPath))
+            clip = Resources.Load<AudioClip>(explosionSoundResourcesPath);
+        if (clip != null)
+            AudioSource.PlayClipAtPoint(clip, transform.position, explosionAudioVolume);
+
         if (smokeTrail != null)
         {
             smokeTrail.transform.parent = null;
@@ -365,5 +395,21 @@ public class MissileDynamicsEuler : MonoBehaviour
     {
         if (launcher != null)
             launcher.OnMissileDestroyed();
+    }
+
+    // Helper - create temporary AudioSource at position with 3D settings
+    void Play3DClipAtPosition(AudioClip clip, Vector3 position, float volume, float minDistance, float maxDistance)
+    {
+        GameObject go = new GameObject("OneShotAudio_Explosion");
+        go.transform.position = position;
+        AudioSource src = go.AddComponent<AudioSource>();
+        src.clip = clip;
+        src.spatialBlend = 1f; // fully 3D
+        src.volume = Mathf.Clamp01(volume);
+        src.minDistance = Mathf.Max(0.01f, minDistance);
+        src.maxDistance = Mathf.Max(src.minDistance + 0.01f, maxDistance);
+        src.rolloffMode = AudioRolloffMode.Logarithmic;
+        src.Play();
+        Destroy(go, clip.length + 0.1f);
     }
 }
