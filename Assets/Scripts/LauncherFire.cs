@@ -1,4 +1,3 @@
-// LauncherFire.cs
 using UnityEngine;
 using System.Collections;
 
@@ -77,7 +76,6 @@ public class LauncherFire : MonoBehaviour
         GameObject missile = Instantiate(missilePrefab, spawnPos, spawnRot);
         activeMissile = missile;
 
-        // Play 3D launch sound at spawn position
         AudioClip clipToPlay = fireSound;
         if (clipToPlay == null && !string.IsNullOrEmpty(fireSoundResourcesPath))
         {
@@ -95,17 +93,15 @@ public class LauncherFire : MonoBehaviour
 
         missile.transform.SetParent(null, true);
 
-        // Scale
         ForceScale(missile.transform);
         StartCoroutine(ForceScaleNextFrame(missile.transform));
 
         // Smjer leta = smjer cijevi
         Vector3 dir = firePoint.forward;
 
-        // Owner collider (za ignore)
         Collider ownerCol = GetComponentInParent<Collider>();
 
-        // Prefer: prepoznaj koji skript je prisutan i pokreni pravi launch
+        // prepoznaj koji skript je prisutan i pokreni pravi launch
         var manual = missile.GetComponent<MissileManualControl>();
         var euler  = missile.GetComponent<MissileDynamicEuler>();
 
@@ -124,7 +120,7 @@ public class LauncherFire : MonoBehaviour
             return;
         }
 
-        // Fallback: ako nema očekivanih skripti, bar pošalji rigidbody naprijed
+        // ako nema očekivanih skripti, bar pošalji rigidbody naprijed
         Rigidbody rb = missile.GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -154,14 +150,14 @@ public class LauncherFire : MonoBehaviour
         if (t != null) ForceScale(t);
     }
 
-    // Helper - create temporary AudioSource at position with 3D settings
+    
     void Play3DClipAtPosition(AudioClip clip, Vector3 position, float volume, float minDistance, float maxDistance)
     {
         GameObject go = new GameObject("OneShotAudio_Fire");
         go.transform.position = position;
         AudioSource src = go.AddComponent<AudioSource>();
         src.clip = clip;
-        src.spatialBlend = 1f; // fully 3D
+        src.spatialBlend = 1f; 
         src.volume = Mathf.Clamp01(volume);
         src.minDistance = Mathf.Max(0.01f, minDistance);
         src.maxDistance = Mathf.Max(src.minDistance + 0.01f, maxDistance);
