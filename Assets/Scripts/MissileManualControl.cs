@@ -171,7 +171,7 @@ public class MissileManualControl : MonoBehaviour
         TankHealth tank = collision.gameObject.GetComponentInParent<TankHealth>();
         if (tank != null)
         {
-            hitTarget = true; // ✅ FIX
+            hitTarget = true; 
             tank.TakeDamage(25f);
 
             if (hitEffectPrefab != null)
@@ -197,14 +197,13 @@ public class MissileManualControl : MonoBehaviour
                 Destroy(explosion, explosionLife);
         }
 
-        // Play explosion sound using helper (Inspector clip preferred, otherwise Resources fallback)
         AudioClip clip = explosionSound;
         if (clip == null && !string.IsNullOrEmpty(explosionSoundResourcesPath))
             clip = Resources.Load<AudioClip>(explosionSoundResourcesPath);
         if (clip != null)
             AudioUtil.Play3DClipAtPosition(clip, transform.position, explosionAudioVolume, explosionMinDistance, explosionMaxDistance);
 
-        // Smoke trail cleanup
+        
         if (smokeTrail != null)
         {
             smokeTrail.transform.parent = null;
