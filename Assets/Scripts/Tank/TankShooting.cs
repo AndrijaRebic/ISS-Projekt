@@ -37,7 +37,7 @@ public class TankShooting : MonoBehaviour
 
     void HandleCannon()
     {
-        if (Input.GetMouseButtonDown(0) && cannonTimer >= cannonCooldown)
+        if (Input.GetMouseButtonDown(0) && !InputBlocker.IsFireBlocked() && cannonTimer >= cannonCooldown)
         {
             cannonTimer = 0f;
 

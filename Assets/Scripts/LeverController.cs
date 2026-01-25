@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class SimpleLever : MonoBehaviour
 {
-    public float upAngle = 0f;      
-    public float downAngle = -45f;  
+
+    public float upAngle = 0f;
+    public float downAngle = -45f;
 
     public float rotationSpeed = 5f;
 
@@ -11,7 +12,7 @@ public class SimpleLever : MonoBehaviour
     private float targetAngle;
     public KeyCode toggleKey = KeyCode.O;
 
-     [Header("Tank Reference")]
+    [Header("Tank Reference")]
     public TankController tank;
 
     void Start()
@@ -24,7 +25,7 @@ public class SimpleLever : MonoBehaviour
         Vector3 currentRotation = transform.localEulerAngles;
         float angle = Mathf.LerpAngle(currentRotation.z, targetAngle, Time.deltaTime * rotationSpeed);
         transform.localEulerAngles = new Vector3(currentRotation.x, currentRotation.y, angle);
-    
+
         if (Input.GetKeyDown(toggleKey))
         {
             ToggleLever();
@@ -38,16 +39,18 @@ public class SimpleLever : MonoBehaviour
 
     private void ToggleLever()
     {
+        InputBlocker.BlockFireForOneFrame();
+
         isDown = !isDown;
         targetAngle = isDown ? downAngle : upAngle;
 
-         if (tank != null)
+        if (tank != null)
         {
             tank.isEngineOn = isDown;
         }
 
-         //zvuk
-         if (TankAudioController.Instance != null)
+        //zvuk
+        if (TankAudioController.Instance != null)
         {
             if (isDown)
             {
